@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src"
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "out",
+  ],
+  "include": [
+    "src/**/*"
+  ]
+}

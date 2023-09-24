@@ -1,0 +1,63 @@
+[
+  {
+    "id": "01",
+    "name": "MOORE",
+    "location": "Location",
+    "ranking": "5",
+    "roles" : "30",
+    "about": "Rich text for the about section of firm",
+    "script": "file Path to python script of firm",
+    "logo": "file Path to logo of firm"
+  },
+  {
+    "id": "02",
+    "name": "MOORE",
+    "location": "London",
+    "ranking": "10",
+    "roles" : "30",
+    "about": "Rich text for the about section of firm",
+    "script": "file Path to python script of firm",
+    "logo": "file Path to logo of firm"
+  },
+  {
+    "id": "03",
+    "name": "Duncan & Toplis",
+    "location": "Kharkiv",
+    "ranking": "20",
+    "roles" : "20",
+    "about": "Rich text for the about section of firm",
+    "script": "file Path to python script of firm",
+    "logo": "file Path to logo of firm"
+  },
+  {
+    "id": "ID of firm in database",
+    "name": "MOORE",
+    "location": "Location",
+    "ranking": "30",
+    "roles" : "15",
+    "about": "Rich text for the about section of firm",
+    "script": "file Path to python script of firm",
+    "logo": "file Path to logo of firm"
+  },
+  {
+    "id": "ID of firm in database",
+    "name": "Duncan & Toplis",
+    "location": "Location",
+    "ranking": "35",
+    "roles" : "30",
+    "about": "Rich text for the about section of firm",
+    "script": "file Path to python script of firm",
+    "logo": "file Path to logo of firm"
+  },
+  {
+    "id": "ID of firm in database",
+    "name": "MOORE",
+    "location": "Location",
+    "ranking": "35",
+    "roles" : "30",
+    "about": "Rich text for the about section of firm",
+    "script": "file Path to python script of firm",
+    "logo": "file Path to logo of firm"
+  }
+  
+]
