@@ -133,6 +133,7 @@ export default function CardJob (props) {
             <Typography
               className={classes.cardFooterText}
               variant='body1'
+              color='primary.black'
               sx={{
                 fontWeight: 600,
                 paddingRight: '16px'
@@ -145,7 +146,6 @@ export default function CardJob (props) {
           </Box>
         )}
       </Box>
-
     </Box>
   )
 }

@@ -77,13 +77,16 @@ const theme = createTheme({
     },
     h4: {
       fontSize: '20px',
-      fontWeight: '700'
+      fontWeight: '700',
+      color: '#242A35'
     },
     body1: {
-      fontSize: '18px'
+      fontSize: '18px',
+      color: '#4D4F52'
     },
     body2: {
-      fontSize: '16px'
+      fontSize: '16px',
+      color: '#242A35'
     },
     caption: {
       fontSize: '14px'
