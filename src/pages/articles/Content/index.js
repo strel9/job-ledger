@@ -1,8 +1,6 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { format } from 'date-fns'
-
-// import { setFilteredArticles } from 'redux/filter/slice'
 
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
@@ -10,18 +8,17 @@ import Button from 'components/Button'
 import Grid from '@mui/material/Unstable_Grid2'
 import Skeleton from '@mui/material/Skeleton'
 
-import CardInsights from 'components/CardInsight'
+import CardArticle from 'components/CardArticle'
 
 import EllipseIcon from 'icons/EllipseIcon'
 
 import useClasses from 'hooks/useClasses'
 import styles from './styles'
 
-export default function ArticlesContent () {
+export default function ArticlesContent (props) {
   const classes = useClasses(styles)
 
   const [isSeeMoreList, setIsSeeMoreList] = React.useState(6)
-  const dispatch = useDispatch()
 
   const isLoading = useSelector(state => state.data.isLoading)
   const articlesData = useSelector(state => state.data.articlesData)
@@ -75,7 +72,7 @@ export default function ArticlesContent () {
             )))
           : (filteredArticles.map((item, index) => index < isSeeMoreList && (
             <Grid xs={2} sm={3} md={6} key={index}>
-              <CardInsights {...item} />
+              <CardArticle {...item} />
             </Grid>
             )))}
       </Grid>

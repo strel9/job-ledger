@@ -1,10 +1,8 @@
 import React from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import { API_URL } from 'constants/api'
-import { ARTICLES, JOBS } from 'constants/links'
+import { ARTICLES_GET, JOBS_GET } from 'constants/links'
 
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
@@ -25,7 +23,7 @@ export default function ArticleDetails (props) {
   const [jobs, setJobs] = React.useState()
 
   React.useEffect(() => {
-    fetch(`${API_URL}${ARTICLES}`)
+    fetch(`${API_URL}${ARTICLES_GET}`)
       .then((res) => {
         return res.json()
       })
@@ -35,7 +33,7 @@ export default function ArticleDetails (props) {
   }, [])
 
   React.useEffect(() => {
-    fetch(`${API_URL}${JOBS}`)
+    fetch(`${API_URL}${JOBS_GET}`)
       .then((res) => {
         return res.json()
       })

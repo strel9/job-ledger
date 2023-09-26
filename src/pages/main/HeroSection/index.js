@@ -11,7 +11,7 @@ import Button from '@mui/material/Button'
 // import HeroLogo from 'icons/HeroLogo'
 // import BackgroundGlow from 'icons/BackgroundGlow'
 
-import { JOBS } from 'constants/links'
+import { JOBS_LINK } from 'constants/links'
 
 import useClasses from 'hooks/useClasses'
 import styles from './styles'
@@ -92,7 +92,7 @@ export default function HeroSection (props) {
           <Button
             className={classes.btn}
             component={Link}
-            href={JOBS}
+            href={JOBS_LINK}
             // variant='outlined'
           >
             See all {jobsQuontity} jobs

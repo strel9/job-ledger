@@ -5,7 +5,7 @@ import { setFilteredArticles } from 'redux/filter/slice'
 import { setArticles, setIsLoading } from 'redux/data/slice'
 
 import { API_URL } from 'constants/api'
-import { ARTICLES } from 'constants/links'
+import { ARTICLES_GET } from 'constants/links'
 
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
@@ -21,7 +21,7 @@ export default function ArticlesPage (props) {
   const dispatch = useDispatch()
 
   React.useEffect(() => {
-    fetch(`${API_URL}${ARTICLES}`)
+    fetch(`${API_URL}${ARTICLES_GET}`)
       .then((res) => {
         return res.json()
       })

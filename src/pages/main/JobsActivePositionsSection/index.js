@@ -14,7 +14,7 @@ import CardJobs from 'components/CardJob'
 
 import ArrowRightIcon from 'icons/ArrowRightIcon'
 
-import { JOBS } from 'constants/links'
+import { JOBS_LINK } from 'constants/links'
 
 import useClasses from 'hooks/useClasses'
 import styles from './styles'
@@ -59,7 +59,7 @@ export default function JobsActivePositions (props) {
 
           <Button
             component={Link}
-            href={JOBS}
+            href={JOBS_LINK}
           >
             <Box
               component='span'

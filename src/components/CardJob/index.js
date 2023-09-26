@@ -2,14 +2,11 @@ import React from 'react'
 import Link from 'next/link'
 
 import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
+// import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
-import CardActions from '@mui/material/CardActions'
+// import CardActions from '@mui/material/CardActions'
 import Grid from '@mui/material/Unstable_Grid2'
 import Typography from '@mui/material/Typography'
-
-// import DuncanToplisLogo from 'images/DuncanToplisLogo'
-// import MooreLogo from 'images/MooreLogo'
 
 import LocationIcon from 'icons/LocationIcon'
 import WatchIcon from 'icons/WatchIcon'
@@ -49,37 +46,42 @@ export default function CardJob (props) {
     <Box
       className={classes.root}
       sx={{
-        // height: '100%'
+        height: '100%'
       }}
     >
       <Box
         component={Link}
         href={`${JOB_DETAILS}${id}`}
         sx={{
-          // height: '100%'
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between'
         }}
       >
         <CardContent
           sx={{
-            // height: '100%',
+            height: '100%',
             pt: 2.4,
             px: 2.4
           }}
         >
-          <Typography
-            component='div'
-            variant='h4'
-            sx={{ mb: 0.8 }}
-          >
-            {jobTitle}
-          </Typography>
+          <div>
+            <Typography
+              component='div'
+              variant='h4'
+              sx={{ mb: 0.8 }}
+            >
+              {jobTitle}
+            </Typography>
 
-          <Typography
-            variant='body1'
-            sx={{ mb: 1.6 }}
-          >
-            {service}
-          </Typography>
+            <Typography
+              variant='body1'
+              sx={{ mb: 1.6 }}
+            >
+              {service}
+            </Typography>
+          </div>
 
           <Grid
             container

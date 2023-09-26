@@ -6,14 +6,15 @@ import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import Button from '@mui/material/Button'
 import Grid from '@mui/material/Unstable_Grid2'
-import CardInsights from 'components/CardInsight'
+
+import CardArticle from 'components/CardArticle'
 
 import ArrowRightIcon from 'icons/ArrowRightIcon'
 
 import useClasses from 'hooks/useClasses'
 import styles from './styles'
 
-import { ARTICLES } from 'constants/links'
+import { ARTICLES_LINK } from 'constants/links'
 
 export default function ArticlesInsights (props) {
   const classes = useClasses(styles)
@@ -57,7 +58,7 @@ export default function ArticlesInsights (props) {
           <Button
             color='secondary'
             component={Link}
-            href={ARTICLES}
+            href={ARTICLES_LINK}
           >
             <Box
               component='span'
@@ -75,7 +76,7 @@ export default function ArticlesInsights (props) {
           {data?.map((item, index) => (
             index < 3 && (
               <Grid xs={2} sm={4} md={4} key={index}>
-                <CardInsights {...item} />
+                <CardArticle {...item} />
               </Grid>)
           ))}
         </Grid>

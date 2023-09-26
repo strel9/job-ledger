@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { setJobs, setFirms, setArticles, setIsLoading } from 'redux/data/slice'
 
 import { API_URL } from 'constants/api'
-import { JOBS, FIRMS, ARTICLES } from 'constants/links'
+import { JOBS_GET, FIRMS_GET, ARTICLES_GET } from 'constants/links'
 
 import Hero from 'pages/main/HeroSection'
 import JobsActivePositions from 'pages/main/JobsActivePositionsSection'
@@ -23,7 +23,7 @@ export default function Main (props) {
   const dispatch = useDispatch()
 
   React.useEffect(() => {
-    fetch(`${API_URL}${JOBS}`)
+    fetch(`${API_URL}${JOBS_GET}`)
       .then((res) => {
         return res.json()
       })
@@ -34,21 +34,23 @@ export default function Main (props) {
   }, [])
 
   React.useEffect(() => {
-    fetch(`${API_URL}${FIRMS}`)
+    fetch(`${API_URL}${FIRMS_GET}`)
       .then((res) => {
         return res.json()
       })
       .then((arr) => {
+        dispatch(setIsLoading(false))
         dispatch(setFirms(arr))
       })
   }, [])
 
   React.useEffect(() => {
-    fetch(`${API_URL}${ARTICLES}`)
+    fetch(`${API_URL}${ARTICLES_GET}`)
       .then((res) => {
         return res.json()
       })
       .then((arr) => {
+        dispatch(setIsLoading(false))
         dispatch(setArticles(arr))
       })
   }, [])
@@ -56,7 +58,6 @@ export default function Main (props) {
   const jobs = useSelector(state => state.data.jobs)
   const firms = useSelector(state => state.data.firms)
   const articles = useSelector(state => state.data.articles)
-  const isLoading = useSelector(state => state.data.firms)
 
   return (
     <Box sx={{
@@ -80,7 +81,7 @@ export default function Main (props) {
       <JobsActivePositions data={jobs} />
       {/* <Notiffy /> */}
       <FirmsPopular data={firms} />
-      <ArticlesInsights data={firms} />
+      <ArticlesInsights data={articles} />
     </Box>
   )
 }

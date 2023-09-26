@@ -6,7 +6,7 @@ import { setFilteredJobs } from 'redux/filter/slice'
 import { setJobs, setIsLoading } from 'redux/data/slice'
 
 import { API_URL } from 'constants/api'
-import { JOBS } from 'constants/links'
+import { JOBS_GET } from 'constants/links'
 
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
@@ -23,7 +23,7 @@ export default function JobsPage () {
   const dispatch = useDispatch()
 
   React.useEffect(() => {
-    fetch(`${API_URL}${JOBS}`)
+    fetch(`${API_URL}${JOBS_GET}`)
       .then((res) => {
         return res.json()
       })

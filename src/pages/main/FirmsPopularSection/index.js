@@ -10,7 +10,7 @@ import CardFirms from 'components/CardFirm'
 
 import ArrowRightIcon from 'icons/ArrowRightIcon'
 
-import { FIRMS } from 'constants/links'
+import { FIRMS_LINK } from 'constants/links'
 
 import useClasses from 'hooks/useClasses'
 import styles from './styles'
@@ -57,7 +57,7 @@ export default function FirmsPopular (props) {
 
           <Button
             component={Link}
-            href={FIRMS}
+            href={FIRMS_LINK}
           >
             <Box
               component='span'

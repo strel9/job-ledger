@@ -2,8 +2,6 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { format } from 'date-fns'
 
-// import { setFilteredFirms } from 'redux/filter/slice'
-
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Button from 'components/Button'
@@ -18,16 +16,14 @@ import useClasses from 'hooks/useClasses'
 import styles from './styles'
 
 export default function FirmsContent (props) {
-  // const {  } = props
   const classes = useClasses(styles)
 
   const [isSeeMoreList, setIsSeeMoreList] = React.useState(6)
-  // const dispatch = useDispatch()
 
   const isLoading = useSelector(state => state.data.isLoading)
   const firmsData = useSelector(state => state.data.firms)
   const filteredFirms = useSelector(state => state.filter.filteredFirms)
-  console.log(filteredFirms)
+
   const TODAY_DATE = format(new Date(), 'MMMM dd, yyyy')
 
   return (

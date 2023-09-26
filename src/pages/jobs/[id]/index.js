@@ -2,20 +2,15 @@ import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-// import { useSelector, useDispatch } from 'react-redux'
-// import { setJobs, setFirms, setIsLoading } from 'redux/data/slice'
-
 import { API_URL } from 'constants/api'
-import { JOBS } from 'constants/links'
+import { JOBS_GET } from 'constants/links'
 
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Unstable_Grid2'
 import Button from '@mui/material/Button'
-// import Button from 'components/Button'
 
-import MooreLogo from 'images/MooreLogo'
 import ArrowLeftIcon from 'icons/ArrowLeftIcon'
 import LocationIcon from 'icons/LocationIcon'
 import WatchIcon from 'icons/WatchIcon'
@@ -37,7 +32,7 @@ export default function JobDetails (props) {
   const itemCard = job?.find(item => parseInt(item.id) === parseInt(pathID))
 
   React.useEffect(() => {
-    fetch(`${API_URL}${JOBS}`)
+    fetch(`${API_URL}${JOBS_GET}`)
       .then((res) => {
         return res.json()
       })
@@ -73,7 +68,7 @@ export default function JobDetails (props) {
       <Container>
         <Button
           component={Link}
-          href={JOBS}
+          href={JOBS_GET}
         >
           <ArrowLeftIcon />
           <Box
@@ -96,7 +91,6 @@ export default function JobDetails (props) {
 
         }}
         >
-          {/* <MooreLogo /> */}
           {itemCard?.logo}
         </Box>
 
@@ -112,7 +106,6 @@ export default function JobDetails (props) {
             align='center'
             sx={{ fontWeight: 700, mb: 1.1 }}
           >
-            {/* Audit Manager */}
             {itemCard?.job_title}
           </Typography>
 
@@ -122,7 +115,6 @@ export default function JobDetails (props) {
             sx={{ fontWeight: 700, mb: 2.4 }}
           >
             {itemCard?.service}
-            {/* Corporate Client Services */}
           </Typography>
 
           <Box sx={{ display: 'flex', mb: 4 }}>

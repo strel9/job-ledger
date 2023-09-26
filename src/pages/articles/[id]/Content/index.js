@@ -1,4 +1,7 @@
 import React from 'react'
+import Link from 'next/link'
+
+import { ARTICLES_LINK } from 'constants/links'
 
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
@@ -13,8 +16,11 @@ import styles from './styles'
 
 export default function Content (props) {
   const classes = useClasses(styles)
-  const { img, about, name, description, time_read } = props
-
+  // const { article } = props
+  const {
+    id, body, title,
+    description, tagline, writer_image
+  } = props
   return (
     <Box
       className={classes.root}
@@ -22,9 +28,11 @@ export default function Content (props) {
         flexBasis: '70%'
       }}
     >
-      <Button>
+      <Button
+        component={Link}
+        href={ARTICLES_LINK}
+      >
         <ArrowLeftIcon />
-
         <Box
           component='span'
           sx={{
@@ -39,9 +47,8 @@ export default function Content (props) {
         <CardMedia
           component='img'
           height='194'
-          // image='/insights.jpg'
-          image={img}
-          alt={about}
+          image={writer_image}
+          alt={title}
           sx={{
             mb: 2.4
           }}
@@ -59,8 +66,7 @@ export default function Content (props) {
               mb: 0.8
             }}
           >
-            {/* Is there more to work than money? */}
-            {name}
+            {title}
           </Typography>
 
           <Typography
@@ -70,8 +76,7 @@ export default function Content (props) {
               mb: 1.6
             }}
           >
-            {/* Understanding compensation */}
-            {about}
+            {body}
           </Typography>
 
           <Box
@@ -94,8 +99,8 @@ export default function Content (props) {
               variant='caption'
               color='primary.darkGray'
             >
-              {/* 7 minutes article */}
-              {time_read}
+              7 minutes article
+              {/* {time_read} */}
             </Typography>
           </Box>
 
@@ -106,7 +111,6 @@ export default function Content (props) {
               mb: 3.6
             }}
           >
-            {/* Exploring the possible reasons and considerations involved in taking a pay cut. */}
             {description}
           </Typography>
         </Box>

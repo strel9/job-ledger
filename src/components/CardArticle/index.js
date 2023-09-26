@@ -3,9 +3,8 @@ import Link from 'next/link'
 
 import Box from '@mui/material/Box'
 // import Card from '@mui/material/Card'
-import CardMedia from '@mui/material/CardMedia'
-import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
+import CardMedia from '@mui/material/CardMedia'
 
 import ArticleIcon from 'icons/ArticleIcon'
 
@@ -15,9 +14,17 @@ import useClasses from 'hooks/useClasses'
 
 import styles from './styles'
 
-export default function CardInsights (props) {
-  const { description, title, tagline, writer_image, time_read, id } = props
+export default function CardArticle (props) {
   const classes = useClasses(styles)
+
+  const {
+    description,
+    title,
+    tagline,
+    writer_image,
+    time_read,
+    id
+  } = props
 
   return (
     <Box
@@ -25,21 +32,27 @@ export default function CardInsights (props) {
       component={Link}
       href={`${ARTICLES_DETAILS}${id}`}
       sx={{
-        height: '100%'
+        // backgroundColor: 'primary.lightGray',
+        display: 'flex',
+        flexDirection: 'column',
+        // alignItems: 'center',
+        py: 2.4,
+        px: 2.4
       }}
     >
-      <CardMedia
-        component='img'
-          // height='243'
-        image={writer_image}
-        alt={title}
-      />
 
       <Box
         sx={{
           // height: '100%'
         }}
       >
+        <CardMedia
+          component='img'
+          // height='243'
+          image={writer_image}
+          alt={title}
+        />
+
         <Typography
           variant='caption'
           color='primary.darkGray'

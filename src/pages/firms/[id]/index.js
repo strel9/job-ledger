@@ -4,8 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import { API_URL } from 'constants/api'
-import { FIRMS } from 'constants/links'
-// import FIRMS_DATA from 'data/FIRMS.json'
+import { FIRMS_LINK, FIRMS_GET } from 'constants/links'
 
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
@@ -16,7 +15,6 @@ import Button from '@mui/material/Button'
 import LocationIcon from 'icons/LocationIcon'
 import RankIcon from 'icons/RankIcon'
 import RolesIcon from 'icons/RolesIcon'
-// import MooreLogo from 'icons/MooreLogo'
 import ArrowLeftIcon from 'icons/ArrowLeftIcon'
 
 import useClasses from 'hooks/useClasses'
@@ -33,7 +31,7 @@ export default function FirmDetails (props) {
   const [firm, setFirm] = React.useState()
 
   React.useEffect(() => {
-    fetch(`${API_URL}${FIRMS}`)
+    fetch(`${API_URL}${FIRMS_GET}`)
       .then((res) => {
         return res.json()
       })
@@ -71,7 +69,7 @@ export default function FirmDetails (props) {
       <Container>
         <Button
           component={Link}
-          href={FIRMS}
+          href={FIRMS_LINK}
         >
           <ArrowLeftIcon />
           <Box
@@ -91,13 +89,11 @@ export default function FirmDetails (props) {
           bgcolor: 'primary.ultraLightBlue',
           mb: 3.2,
           height: 150,
-          // borderRadiusTop: 2.4,
           borderTopLeftRadius: 24,
           borderTopRightRadius: 24
 
         }}
         >
-          {/* <MooreLogo /> */}
           {itemCard?.logo}
         </Box>
 

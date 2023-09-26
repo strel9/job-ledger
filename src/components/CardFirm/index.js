@@ -25,7 +25,6 @@ export default function CardFirms (props) {
   const {
     id, name, location, ranking, roles, logo
   } = props
-  console.log(location)
 
   const CARD_FIRM_ICONS = [
     {
@@ -55,7 +54,7 @@ export default function CardFirms (props) {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        py: 2
+        py: 2.4
       }}
     >
       <Box sx={{

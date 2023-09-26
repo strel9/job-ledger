@@ -5,7 +5,7 @@ import { setFilteredFirms } from 'redux/filter/slice'
 import { setFirms, setIsLoading } from 'redux/data/slice'
 
 import { API_URL } from 'constants/api'
-import { FIRMS } from 'constants/links'
+import { FIRMS_GET } from 'constants/links'
 
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
@@ -21,7 +21,7 @@ export default function FirmsPage () {
   const dispatch = useDispatch()
 
   React.useEffect(() => {
-    fetch(`${API_URL}${FIRMS}`)
+    fetch(`${API_URL}${FIRMS_GET}`)
       .then((res) => {
         return res.json()
       })
