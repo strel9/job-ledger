@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+// import { useSelector } from 'react-redux'
 
 import { ARTICLES_LINK } from 'constants/links'
 
@@ -7,6 +8,9 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import CardMedia from '@mui/material/CardMedia'
+import Avatar from '@mui/material/Avatar'
+
+import CardArticle from 'components/CardArticle'
 
 import ArrowLeftIcon from 'icons/ArrowLeftIcon'
 import ArticleIcon from 'icons/ArticleIcon'
@@ -14,18 +18,22 @@ import ArticleIcon from 'icons/ArticleIcon'
 import useClasses from 'hooks/useClasses'
 import styles from './styles'
 
+// const isLoading = useSelector(state => state.data.isLoading)
+
 export default function Content (props) {
   const classes = useClasses(styles)
-  // const { article } = props
   const {
     id, body, title,
-    description, tagline, writer_image
+    description, tagline,
+    writer_image, writer_name, updated_at,
+    articles
   } = props
+
   return (
     <Box
       className={classes.root}
       sx={{
-        flexBasis: '70%'
+        flexBasis: '60%'
       }}
     >
       <Button
@@ -113,7 +121,31 @@ export default function Content (props) {
           >
             {description}
           </Typography>
+
         </Box>
+
+        <Box sx={{
+          display: 'flex',
+          alignItems: 'center',
+          mb: 4
+        }}
+        >
+          <Avatar alt={writer_image} src={writer_image} />
+          <Box sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            ml: 1.6
+          }}
+          >
+            <Typography>
+              {writer_name}
+            </Typography>
+            <Typography>
+              {updated_at}
+            </Typography>
+          </Box>
+        </Box>
+
       </Box>
     </Box>
   )

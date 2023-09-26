@@ -2,13 +2,9 @@ import React from 'react'
 import Link from 'next/link'
 
 import Box from '@mui/material/Box'
-// import Card from '@mui/material/Card'
+
 import Typography from '@mui/material/Typography'
 import CardMedia from '@mui/material/CardMedia'
-
-// import DuncanToplisLogo from 'images/DuncanToplisLogo'
-// import MooreLogo from 'images/MooreLogo'
-
 import LocationIcon from 'icons/LocationIcon'
 import RankIcon from 'icons/RankIcon'
 import RolesIcon from 'icons/RolesIcon'
@@ -23,7 +19,7 @@ export default function CardFirms (props) {
   const classes = useClasses(styles)
 
   const {
-    id, name, location, ranking, roles, logo
+    id, name, location, ranking, logo, jobs_count
   } = props
 
   const CARD_FIRM_ICONS = [
@@ -40,7 +36,7 @@ export default function CardFirms (props) {
     {
       icon: <RolesIcon />,
       title: 'Roles',
-      number: roles
+      number: jobs_count
     }
   ]
 
@@ -62,12 +58,9 @@ export default function CardFirms (props) {
         justifyContent: 'center'
       }}
       >
-        {/* <DuncanToplisLogo /> */}
-        {/* {logo} */}
         <CardMedia
           component='img'
             // height=''
-            // image='/insights.jpg'
           image={logo}
           alt={name}
         />
@@ -78,7 +71,6 @@ export default function CardFirms (props) {
           display: 'flex',
           flexDirection: 'column',
           mt: 1.5
-          // width: '140px'
         }}
       >
         {CARD_FIRM_ICONS.map((item, index) => (

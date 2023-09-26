@@ -43,7 +43,6 @@ export default function JobsActivePositions (props) {
             justifyContent: 'space-between',
             alignItems: 'center',
             mb: 2.4
-            // maxWidth: '887px'
           }}
         >
           <Typography
@@ -73,7 +72,11 @@ export default function JobsActivePositions (props) {
           </Button>
         </Box>
 
-        <Grid container spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+        <Grid
+          container
+          spacing={{ xs: 2, md: 2 }}
+          columns={{ xs: 4, sm: 8, md: 12 }}
+        >
           {isLoading
             ? (Array.from(Array(6)).map((item, index) =>
               <Grid xs={2} sm={4} md={4} key={index}>

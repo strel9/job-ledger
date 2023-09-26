@@ -36,13 +36,13 @@ export default function Filter (props) {
         className={classes.positions}
         container
         spacing={{ xs: 2, md: 2 }}
-        columns={{ xs: 4, sm: 8, md: 12 }}
+        columns={{ xs: 12, sm: 12, md: 12 }}
         sx={{
           mb: 1.4
         }}
       >
         {data?.map((item, index) => index < isSeeMoreList && (
-          <Grid xs={2} sm={3} md={12} key={index}>
+          <Grid xs={12} sm={12} md={12} key={index}>
             <CardJobs {...item} />
           </Grid>
         ))}

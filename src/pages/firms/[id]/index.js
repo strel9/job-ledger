@@ -53,7 +53,7 @@ export default function FirmDetails (props) {
     },
     {
       icon: <RolesIcon />,
-      title: itemCard?.roles
+      title: itemCard?.jobs_count
     }
   ]
 
@@ -112,14 +112,9 @@ export default function FirmDetails (props) {
           </Typography>
 
           <Box sx={{ display: 'flex', mb: 4 }}>
-            {/* <Grid
-            container spacing={{ xs: 1, md: 2 }}
-            columns={{ xs: 4, sm: 8, md: 12 }}
-          > */}
             {CARD_INFO.map((item, index) => (
-              <Grid
+              <Box
                 key={index}
-                xs={2} sm={4} md={6}
                 sx={{
                   display: 'flex',
                   alignItems: 'center'
@@ -141,13 +136,11 @@ export default function FirmDetails (props) {
                   color='primary.black'
                   sx={{
                     fontWeight: 600
-                    // whiteSpace: 'nowrap'
                   }}
                 >{item.title}
                 </Typography>
-              </Grid>
+              </Box>
             ))}
-            {/* </Grid> */}
           </Box>
 
           <Box sx={{

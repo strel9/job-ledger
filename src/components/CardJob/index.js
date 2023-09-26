@@ -2,9 +2,6 @@ import React from 'react'
 import Link from 'next/link'
 
 import Box from '@mui/material/Box'
-// import Card from '@mui/material/Card'
-import CardContent from '@mui/material/CardContent'
-// import CardActions from '@mui/material/CardActions'
 import Grid from '@mui/material/Unstable_Grid2'
 import Typography from '@mui/material/Typography'
 
@@ -59,64 +56,73 @@ export default function CardJob (props) {
           justifyContent: 'space-between'
         }}
       >
-        <CardContent
+        <Box
           sx={{
             height: '100%',
             pt: 2.4,
-            px: 2.4
+            pb: 1.3,
+            px: 2,
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between'
           }}
         >
-          <div>
-            <Typography
-              component='div'
-              variant='h4'
-              sx={{ mb: 0.8 }}
-            >
-              {jobTitle}
-            </Typography>
 
+          <Typography
+            component='div'
+            variant='h4'
+            sx={{ mb: 0.8 }}
+          >
+            {jobTitle}
+          </Typography>
+          <div>
             <Typography
               variant='body1'
               sx={{ mb: 1.6 }}
             >
               {service}
             </Typography>
-          </div>
 
-          <Grid
-            container
-            spacing={0}
-            columns={{ xs: 4, sm: 8, md: 12 }}
-            // sx={{ p: 0 }}
-          >
-            {CARD_JOB_ICONS.map((item, index) => (
-              <Grid
-                key={item}
-                md={6}
-                sx={{
-                  height: '100%',
-                  display: 'flex',
-                  alignItems: 'center'
-                }}
-              >
-                <Box sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  mr: 0.4
-                }}
+            <Grid
+              container
+              spacing={0}
+              columns={{ xs: 4, sm: 8, md: 12, lg: 12 }}
+            >
+              {CARD_JOB_ICONS.map((item, index) => (
+                <Grid
+                  key={item}
+                  sm={8}
+                  md={12}
+                  lg={6}
+                  sx={{
+                    // height: '100%',
+                    display: 'flex',
+                    alignItems: 'center'
+                  }}
                 >
-                  {item.icon}
-                </Box>
+                  <Box sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    mr: 0.2
+                  }}
+                  >
+                    {item.icon}
+                  </Box>
 
-                <Typography
-                  variant='body2'
-                >{item.title}
-                </Typography>
-              </Grid>
-            ))}
-          </Grid>
-        </CardContent>
+                  <Typography
+                    variant='body2'
+                    sx={{
+                      fontSize: 15,
+                      whiteSpace: 'nowrap'
+                    }}
+                  >{item.title}
+                  </Typography>
+                </Grid>
+              ))}
+            </Grid>
+          </div>
+        </Box>
 
         {!variantCard && (
           <Box

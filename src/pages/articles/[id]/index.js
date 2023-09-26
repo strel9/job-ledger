@@ -12,6 +12,7 @@ import Content from './Content'
 
 import useClasses from 'hooks/useClasses'
 import styles from './styles'
+import ArticlesBlock from './Articles'
 
 export default function ArticleDetails (props) {
   const classes = useClasses(styles)
@@ -50,17 +51,21 @@ export default function ArticleDetails (props) {
       component='div'
       sx={{
         pt: 14.8,
+        pb: 10,
         bgcolor: 'primary.bg'
       }}
     >
-      <Container
-        sx={{
+      <Container>
+        <Box sx={{
           display: 'flex'
         }}
-      >
-        <Content {...itemCard} />
+        >
+          <Content {...itemCard} />
 
-        <Jobs data={jobs} />
+          <Jobs data={jobs} />
+        </Box>
+
+        <ArticlesBlock articles={articles} />
       </Container>
     </Box>
   )
