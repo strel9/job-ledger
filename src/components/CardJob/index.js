@@ -21,7 +21,7 @@ export default function CardJob (props) {
   const {
     id, job_title: jobTitle, service,
     location, employment, salary,
-    logo, variantCard
+    firm_logo, variantCard
   } = props
 
   const CARD_JOB_ICONS = [
@@ -150,7 +150,7 @@ export default function CardJob (props) {
               By
             </Typography>
 
-            {logo}
+            {firm_logo}
           </Box>
         )}
       </Box>

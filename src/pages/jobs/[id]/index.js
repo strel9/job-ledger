@@ -56,6 +56,10 @@ export default function JobDetails (props) {
     }
   ]
 
+  function createMarkup() {
+    return {__html: itemCard?.description};
+  }
+
   return (
     <Box
       className={classes.root}
@@ -156,9 +160,10 @@ export default function JobDetails (props) {
             {/* </Grid> */}
           </Box>
 
-          <Box sx={{ mb: 2.3 }}>
-            {itemCard?.description}
-          </Box>
+          <Typography className={classes.richText}
+           sx={{ mb: 2.3 }}>
+            <div dangerouslySetInnerHTML={createMarkup()} />
+          </Typography>
 
           <Button
             variant='contained'

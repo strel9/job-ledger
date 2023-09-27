@@ -87,13 +87,13 @@ export default function JobsFilter (props) {
       )
     }
 
-    // Salary Filter
-    const min = salaryMinMax[0]
-    const max = salaryMinMax[1]
+    // // Salary Filter
+    // const min = salaryMinMax[0]
+    // const max = salaryMinMax[1]
 
-    updatedList = updatedList.filter(
-      (item) => parseInt(item.salary) >= min && item.salary <= max
-    )
+    // updatedList = updatedList.filter(
+    //   (item) => parseInt(item.salary) >= min && item.salary <= max
+    // )
 
     // Search Location
     if (locationSearch) {
