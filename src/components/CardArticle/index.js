@@ -8,7 +8,7 @@ import CardMedia from '@mui/material/CardMedia'
 
 import ArticleIcon from 'icons/ArticleIcon'
 
-import { ARTICLES_DETAILS } from 'constants/links'
+import { ARTICLE_DETAILS_LINK } from 'constants/links'
 
 import useClasses from 'hooks/useClasses'
 
@@ -21,8 +21,8 @@ export default function CardArticle (props) {
     description,
     title,
     tagline,
-    writer_image,
-    time_read,
+    writer_image: writerImage,
+    time_read: timeRead,
     id
   } = props
 
@@ -30,12 +30,10 @@ export default function CardArticle (props) {
     <Box
       className={classes.root}
       component={Link}
-      href={`${ARTICLES_DETAILS}${id}`}
+      href={`${ARTICLE_DETAILS_LINK}/${id}`}
       sx={{
-        // backgroundColor: 'primary.lightGray',
         display: 'flex',
         flexDirection: 'column',
-        // alignItems: 'center',
         py: 2.4,
         px: 2.4
       }}
@@ -43,13 +41,11 @@ export default function CardArticle (props) {
 
       <Box
         sx={{
-          // height: '100%'
         }}
       >
         <CardMedia
           component='img'
-          // height='243'
-          image={writer_image}
+          image={writerImage}
           alt={title}
         />
 

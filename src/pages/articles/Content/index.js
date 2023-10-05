@@ -1,10 +1,11 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import Link from 'next/link'
+
 import { format } from 'date-fns'
 
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
-import Button from 'components/Button'
+import Button from '@mui/material/Button'
 import Grid from '@mui/material/Unstable_Grid2'
 import Skeleton from '@mui/material/Skeleton'
 
@@ -18,13 +19,17 @@ import styles from './styles'
 export default function ArticlesContent (props) {
   const classes = useClasses(styles)
 
-  const [isSeeMoreList, setIsSeeMoreList] = React.useState(6)
+  const {
+    articlesData, isLoading, offset, limit,
+    handleOffset, handleLimit
+  } = props
 
-  const isLoading = useSelector(state => state.data.isLoading)
-  const articlesData = useSelector(state => state.data.articlesData)
-  const filteredArticles = useSelector(state => state.filter.filteredArticles)
+  // const isLoading = useSelector(state => state.data.isLoading)
+  // const articlesData = useSelector(state => state.data.articlesData)
+  // const filteredArticles = useSelector(state => state.filter.filteredArticles)
 
   const TODAY_DATE = format(new Date(), 'MMMM dd, yyyy')
+
   return (
     <Box
       className={classes.root}
@@ -45,11 +50,11 @@ export default function ArticlesContent (props) {
         sx={{
           display: 'flex',
           alignItems: 'center',
-          my: [0.5, 1.9]
+          my: 2.4
         }}
       >
         <Typography sx={{ mr: 1 }}>
-          {filteredArticles?.length} articles
+          {articlesData?.length} articles
         </Typography>
 
         <EllipseIcon />
@@ -66,32 +71,37 @@ export default function ArticlesContent (props) {
       >
         {isLoading
           ? (Array.from(Array(6)).map((item, index) => (
-            <Grid xs={2} sm={3} md={6} key={index}>
+            <Grid xs={4} sm={8} md={6} key={index}>
               <Skeleton variant='rounded' width={360} height={210} />
             </Grid>
             )))
-          : (filteredArticles.map((item, index) => index < isSeeMoreList && (
-            <Grid xs={2} sm={3} md={6} key={index}>
+          : (articlesData.map((item, index) => (
+            <Grid xs={4} sm={8} md={6} key={index}>
               <CardArticle {...item} />
             </Grid>
             )))}
       </Grid>
 
-      <Box sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        pt: 3.2
-      }}
-      >
-        {(articlesData?.length > isSeeMoreList) && (
+      {!(articlesData.length < 10) && (
+        <Box sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          pt: 3.2
+        }}
+        >
           <Button
+            component={Link}
+            onClick={(e) => {
+            // e.preventDefault()
+              handleOffset(offset + 10)
+            }}
+            href={`/firms?offset=${offset / 10}`}
             variant='text'
-            onClick={() => setIsSeeMoreList(1000)}
           >
             See more insights
           </Button>
-        )}
-      </Box>
+        </Box>
+      )}
     </Box>
   )
 }

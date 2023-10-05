@@ -5,8 +5,8 @@ const initialState = {
   filteredFirms: [],
   filteredArticles: [],
   filterSearch: '',
-  servicesActive: '',
-  industriesActive: '',
+  serviceActive: '',
+  industryActive: '',
   seniorityActive: '',
   salaryMinMax: [1, 10000],
   locationSearch: '',
@@ -34,10 +34,10 @@ export const filter = createSlice({
       state.filterSearch = action.payload
     },
     setServisesActive: (state, action) => {
-      state.servicesActive = action.payload
+      state.serviceActive = action.payload
     },
     setIndustriesActive: (state, action) => {
-      state.industriesActive = action.payload
+      state.industryActive = action.payload
     },
     setSeniorityActive: (state, action) => {
       state.seniorityActive = action.payload
@@ -67,10 +67,20 @@ export const filter = createSlice({
 })
 
 export const {
-  setFilterSearch, setFilteredFirms, setFilteredArticles, setServisesActive,
-  setIndustriesActive, setSeniorityActive, setSalaryMinMax,
-  setLocationSearch, setFirmSearch, setFirmActive, setFirmRankMinMax, setFilteredJobs,
-  setArticleSearch, setArticleActive
+  setFilteredJobs,
+  setFilteredFirms,
+  setFilteredArticles,
+  setFilterSearch,
+  setServisesActive,
+  setIndustriesActive,
+  setSeniorityActive,
+  setSalaryMinMax,
+  setLocationSearch,
+  setFirmSearch,
+  setFirmActive,
+  setFirmRankMinMax,
+  setArticleSearch,
+  setArticleActive
 } = filter.actions
 
 export default filter.reducer

@@ -7,7 +7,7 @@ import Box from '@mui/material/Box'
 import Chip from '@mui/material/Chip'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import Button from 'components/Button'
+import Button from '@mui/material//Button'
 
 export default function FilterCategories (props) {
   const { title, categories, activeCategory, setActiveCategory } = props
@@ -42,7 +42,7 @@ export default function FilterCategories (props) {
       >
         {categories.map((item, index) => index < isOpenMoreCategory && (
           <Chip
-            key={item}
+            key={index}
             label={item}
             color={activeCategory === item ? 'secondary' : 'primary'}
               // color='primary'

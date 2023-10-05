@@ -190,8 +190,8 @@ const theme = createTheme({
         },
         outlinedSecondary: {
           color: '#242A35',
-          backgroundColor: '#4780ED',
-          // backgroundColor: '#E5F1F9',
+          // backgroundColor: '#4780ED',
+          backgroundColor: '#E5F1F9',
           borderColor: '#4780ED',
 
           '&:hover': {

@@ -1,12 +1,7 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
-import { setFilteredJobs } from 'redux/filter/slice'
-
-import { setJobs, setIsLoading } from 'redux/data/slice'
-
-import { API_URL } from 'constants/api'
-import { JOBS_GET } from 'constants/links'
+import { API_URL, JOBS_GET } from 'constants/links'
 
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
@@ -17,22 +12,65 @@ import Content from './Content'
 import useClasses from 'hooks/useClasses'
 import styles from './styles'
 
-export default function JobsPage () {
+export const getServerSideProps = async ({ query }) => {
+  const page = await query.page || 0
+
+  return {
+    props: {
+      page
+    }
+  }
+}
+
+export default function JobsPage (props) {
   const classes = useClasses(styles)
 
-  const dispatch = useDispatch()
+  const [jobsData, setJobsData] = React.useState([])
+  const [jobsCount, setJobsCount] = React.useState()
+  const [isLoading, setIsLoading] = React.useState(true)
+  const [offset, setOffset] = React.useState(0)
+  const [limit, setLimit] = React.useState(10)
+
+  // const offset = useSelector(state => state.data.offset)
+  // const limit = useSelector(state => state.data.limit)
+  const filterSearch = useSelector(state => state.filter.filterSearch)
+  const serviceActive = useSelector(state => state.filter.serviceActive)
+  const industryActive = useSelector(state => state.filter.industryActive)
+  const seniorityActive = useSelector(state => state.filter.seniorityActive)
+  // const salaryMinMax = useSelector(state => state.filter.salaryMinMax)
+  const locationSearch = useSelector(state => state.filter.locationSearch)
+  const firmSearch = useSelector(state => state.filter.firmSearch)
+  const firmActive = useSelector(state => state.filter.firmActive)
+
+  const handleOffset = (value) => {
+    setOffset(value)
+  }
+  const handleLimit = (value) => {
+    setLimit(value)
+  }
 
   React.useEffect(() => {
-    fetch(`${API_URL}${JOBS_GET}`)
-      .then((res) => {
-        return res.json()
-      })
-      .then((arr) => {
-        dispatch(setJobs(arr))
-        dispatch(setFilteredJobs(arr))
-        dispatch(setIsLoading(false))
-      })
-  }, [])
+    async function fetchData () {
+      const response =
+      await fetch(`${API_URL}${JOBS_GET}/?offset=${offset}&limit=${limit}
+      &filterSearch=${filterSearch}&service=${serviceActive}&industrie=${industryActive}
+      &seniority=${seniorityActive}&location=${locationSearch}&firmSearch=${firmSearch}
+      &firmActive=${firmActive}`)
+
+      const jobsDataFetch = await response.json()
+      const jobs = jobsDataFetch.jobs
+      // console.log(jobs)
+      const jobsCount = jobsDataFetch.job_count
+      // console.log(jobsCount)
+
+      // setJobsData([...jobsData, ...jobs])
+      setJobsData(jobs)
+      setJobsCount(jobsCount)
+      setIsLoading(false)
+    }
+    fetchData()
+  }, [offset, limit, filterSearch, serviceActive, industryActive, seniorityActive,
+    locationSearch, firmSearch, firmActive])
 
   return (
     <Box
@@ -49,7 +87,15 @@ export default function JobsPage () {
       >
         <Filter />
 
-        <Content />
+        <Content
+          jobs={jobsData}
+          jobsCount={jobsCount}
+          isLoading={isLoading}
+          offset={offset}
+          limit={limit}
+          handleOffset={handleOffset}
+          handleLimit={handleLimit}
+        />
       </Container>
     </Box>
   )

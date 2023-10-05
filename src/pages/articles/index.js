@@ -1,11 +1,10 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+// import { useSelector } from 'react-redux'
 
-import { setFilteredArticles } from 'redux/filter/slice'
-import { setArticles, setIsLoading } from 'redux/data/slice'
+// import { setFilteredArticles } from 'redux/filter/slice'
+// import { setArticles, setIsLoading } from 'redux/data/slice'
 
-import { API_URL } from 'constants/api'
-import { ARTICLES_GET } from 'constants/links'
+import { API_URL, ARTICLES_GET } from 'constants/links'
 
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
@@ -18,19 +17,36 @@ import styles from './styles'
 
 export default function ArticlesPage (props) {
   const classes = useClasses(styles)
-  const dispatch = useDispatch()
+
+  const [articlesData, setArticlesData] = React.useState([])
+  const [isLoading, setIsLoading] = React.useState(true)
+  const [offset, setOffset] = React.useState(0)
+  const [limit, setLimit] = React.useState(10)
+
+  // const filterSearch = useSelector(state => state.filter.filterSearch)
+  // const firmActive = useSelector(state => state.filter.firmActive)
+
+  const handleOffset = (value) => {
+    setOffset(value)
+  }
+  const handleLimit = (value) => {
+    setLimit(value)
+  }
 
   React.useEffect(() => {
-    fetch(`${API_URL}${ARTICLES_GET}`)
-      .then((res) => {
-        return res.json()
-      })
-      .then((arr) => {
-        dispatch(setArticles(arr))
-        dispatch(setFilteredArticles(arr))
-        dispatch(setIsLoading(false))
-      })
-  }, [])
+    async function fetchData () {
+      const response =
+        // await fetch(`${API_URL}${FIRMS_GET}/?offset=${offset}&limit=${limit}`)
+        await fetch(`${API_URL}${ARTICLES_GET}`)
+
+      const data = await response.json()
+
+      // setJobsData([...data, ...firm])
+      setArticlesData(data)
+      setIsLoading(false)
+    }
+    fetchData()
+  }, [offset, limit])
 
   return (
     <Box
@@ -38,6 +54,7 @@ export default function ArticlesPage (props) {
       component='div'
       sx={{
         pt: 14.8,
+        pb: 10,
         bgcolor: 'primary.bg'
       }}
     >
@@ -48,7 +65,14 @@ export default function ArticlesPage (props) {
       >
         <Filter />
 
-        <Content />
+        <Content
+          articlesData={articlesData}
+          isLoading={isLoading}
+          offset={offset}
+          limit={limit}
+          handleOffset={handleOffset}
+          handleLimit={handleLimit}
+        />
       </Container>
     </Box>
   )

@@ -1,8 +1,6 @@
 import React from 'react'
-import { useRouter } from 'next/router'
 
-import { API_URL } from 'constants/api'
-import { ARTICLES_GET, JOBS_GET } from 'constants/links'
+import { API_URL, ARTICLE_DETAILS_GET, ARTICLES_GET, JOBS_GET } from 'constants/links'
 
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
@@ -14,36 +12,30 @@ import useClasses from 'hooks/useClasses'
 import styles from './styles'
 import ArticlesBlock from './Articles'
 
+export const getServerSideProps = async (context) => {
+  const { id } = context.params
+
+  const responseArticle = await fetch(`${API_URL}${ARTICLE_DETAILS_GET}/${id}`)
+  const articleData = await responseArticle.json()
+
+  const responseArticles = await fetch(`${API_URL}${ARTICLES_GET}`)
+  const articlesData = await responseArticles.json()
+
+  const responseJobs = await fetch(`${API_URL}${JOBS_GET}`)
+  const jobsData = await responseJobs.json()
+
+  return {
+    props: {
+      article: articleData,
+      articles: articlesData,
+      jobs: jobsData.jobs
+    }
+  }
+}
+
 export default function ArticleDetails (props) {
   const classes = useClasses(styles)
-
-  const router = useRouter()
-  const { id: pathID } = router.query
-
-  const [articles, setArticles] = React.useState()
-  const [jobs, setJobs] = React.useState()
-
-  React.useEffect(() => {
-    fetch(`${API_URL}${ARTICLES_GET}`)
-      .then((res) => {
-        return res.json()
-      })
-      .then((arr) => {
-        setArticles(arr)
-      })
-  }, [])
-
-  React.useEffect(() => {
-    fetch(`${API_URL}${JOBS_GET}`)
-      .then((res) => {
-        return res.json()
-      })
-      .then((arr) => {
-        setJobs(arr)
-      })
-  }, [])
-
-  const itemCard = articles?.find(item => parseInt(item.id) === parseInt(pathID))
+  const { article, articles, jobs } = props
 
   return (
     <Box
@@ -60,7 +52,7 @@ export default function ArticleDetails (props) {
           display: 'flex'
         }}
         >
-          <Content {...itemCard} />
+          <Content {...article} />
 
           <Jobs data={jobs} />
         </Box>

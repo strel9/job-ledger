@@ -9,7 +9,7 @@ import LocationIcon from 'icons/LocationIcon'
 import RankIcon from 'icons/RankIcon'
 import RolesIcon from 'icons/RolesIcon'
 
-import { FIRM_DETAILS } from 'constants/links'
+import { FIRM_DETAILS_LINK } from 'constants/links'
 
 import useClasses from 'hooks/useClasses'
 
@@ -44,7 +44,7 @@ export default function CardFirms (props) {
     <Box
       className={classes.root}
       component={Link}
-      href={`${FIRM_DETAILS}${id}`}
+      href={`${FIRM_DETAILS_LINK}/${id}`}
       sx={{
         // backgroundColor: 'primary.lightGray',
         display: 'flex',
@@ -75,7 +75,7 @@ export default function CardFirms (props) {
       >
         {CARD_FIRM_ICONS.map((item, index) => (
           <Box
-            key={item}
+            key={index}
             sx={{
               display: 'flex',
               justifyContent: 'space-between',

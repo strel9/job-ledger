@@ -1,10 +1,11 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import Link from 'next/link'
+
 import { format } from 'date-fns'
 
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
-import Button from 'components/Button'
+import Button from '@mui/material/Button'
 import Grid from '@mui/material/Unstable_Grid2'
 import Skeleton from '@mui/material/Skeleton'
 
@@ -17,12 +18,10 @@ import styles from './styles'
 
 export default function FirmsContent (props) {
   const classes = useClasses(styles)
-
-  const [isSeeMoreList, setIsSeeMoreList] = React.useState(6)
-
-  const isLoading = useSelector(state => state.data.isLoading)
-  const firmsData = useSelector(state => state.data.firms)
-  const filteredFirms = useSelector(state => state.filter.filteredFirms)
+  const {
+    firmsData, isLoading, offset, limit,
+    handleOffset, handleLimit
+  } = props
 
   const TODAY_DATE = format(new Date(), 'MMMM dd, yyyy')
 
@@ -49,7 +48,7 @@ export default function FirmsContent (props) {
         }}
       >
         <Typography sx={{ mr: 1 }}>
-          {filteredFirms?.length} open firms
+          {firmsData?.length} open firms
         </Typography>
 
         <EllipseIcon />
@@ -65,16 +64,16 @@ export default function FirmsContent (props) {
         columns={{ xs: 4, sm: 8, md: 12 }}
       >
         {isLoading
-          ? (Array.from(Array(6)).map((item, index) => (
-            <Grid xs={2} sm={3} md={6} key={index}>
+          ? (Array.from(Array(6)).map((item, index) =>
+            <Grid xs={4} sm={8} md={6} key={index}>
               <Skeleton variant='rounded' width={360} height={210} />
             </Grid>
-            )))
-          : (filteredFirms.map((item, index) => index < isSeeMoreList && (
-            <Grid xs={2} sm={3} md={6} key={index}>
+            ))
+          : (firmsData.map((item, index) =>
+            <Grid xs={4} sm={8} md={6} key={index}>
               <CardFirm {...item} />
             </Grid>
-            )))}
+            ))}
       </Grid>
 
       <Box sx={{
@@ -83,10 +82,15 @@ export default function FirmsContent (props) {
         pt: 3.2
       }}
       >
-        {(firmsData.length > isSeeMoreList) && (
+        {firmsData.length >= offset && (
           <Button
+            component={Link}
+            onClick={(e) => {
+              e.preventDefault()
+              handleOffset(offset + 10)
+            }}
+            href={`/firms?offset=${offset}`}
             variant='text'
-            onClick={() => setIsSeeMoreList(1000)}
           >
             See more firms
           </Button>

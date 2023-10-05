@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 
 import Box from '@mui/material/Box'
@@ -9,7 +10,7 @@ import LocationIcon from 'icons/LocationIcon'
 import WatchIcon from 'icons/WatchIcon'
 import DollarIcon from 'icons/DollarIcon'
 
-import { JOB_DETAILS } from 'constants/links'
+import { JOB_DETAILS_LINK } from 'constants/links'
 
 import useClasses from 'hooks/useClasses'
 
@@ -19,9 +20,8 @@ export default function CardJob (props) {
   const classes = useClasses(styles)
 
   const {
-    id, job_title: jobTitle, service,
-    location, employment, salary,
-    firm_logo, variantCard
+    id, job_title: jobTitle, service, location, employment, salary,
+    firm_logo: firmLogo, firm_name: firmName, variantCard
   } = props
 
   const CARD_JOB_ICONS = [
@@ -48,7 +48,7 @@ export default function CardJob (props) {
     >
       <Box
         component={Link}
-        href={`${JOB_DETAILS}${id}`}
+        href={`${JOB_DETAILS_LINK}/${id}`}
         sx={{
           height: '100%',
           display: 'flex',
@@ -73,7 +73,7 @@ export default function CardJob (props) {
             variant='h4'
             sx={{ mb: 0.8 }}
           >
-            {jobTitle}
+            {id} {jobTitle}
           </Typography>
           <div>
             <Typography
@@ -90,7 +90,7 @@ export default function CardJob (props) {
             >
               {CARD_JOB_ICONS.map((item, index) => (
                 <Grid
-                  key={item}
+                  key={index}
                   sm={8}
                   md={12}
                   lg={6}
@@ -150,7 +150,14 @@ export default function CardJob (props) {
               By
             </Typography>
 
-            {firm_logo}
+            <Image
+              src={firmLogo}
+              alt={firmName}
+              width={280}
+              height={50}
+              priority
+            />
+
           </Box>
         )}
       </Box>

@@ -6,7 +6,6 @@ import { useRouter } from 'next/router'
 import useScrollTrigger from '@mui/material/useScrollTrigger'
 
 import Container from '@mui/material/Container'
-// import Container from 'components/Container'
 
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
@@ -19,9 +18,7 @@ import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 import Toolbar from '@mui/material/Toolbar'
-// import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
-// import Button from 'components/Button'
 
 import { NAV_ITEMS, MAIN } from 'constants/links'
 
@@ -34,7 +31,8 @@ import styles from './styles'
 const drawerWidth = 240
 
 function DrawerAppBar (props) {
-  const classes = useClasses(styles)
+  // const classes = useClasses(styles)
+  const { window } = props
   const trigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 0,
@@ -43,7 +41,6 @@ function DrawerAppBar (props) {
 
   const router = useRouter()
 
-  const { window } = props
   const [mobileOpen, setMobileOpen] = React.useState(false)
 
   const handleDrawerToggle = () => {
@@ -105,7 +102,7 @@ function DrawerAppBar (props) {
               aria-label='open drawer'
               edge='start'
               onClick={handleDrawerToggle}
-              sx={{ mr: 2, display: { sm: 'none' } }}
+              sx={{ mr: { xs: 1, sm: 3 }, display: { sm: 'none' } }}
             >
               <MenuIcon />
             </IconButton>
@@ -131,7 +128,7 @@ function DrawerAppBar (props) {
                     fontWeight: 400,
                     textTransform: 'uppercase',
                     ...(index < NAV_ITEMS.length - 1 && {
-                      mr: 4.2
+                      mr: { xs: 1, sm: 2, lg: 4.2 }
                     }),
                     ...(router.asPath === item.link && {
                       color: 'primary.blue',

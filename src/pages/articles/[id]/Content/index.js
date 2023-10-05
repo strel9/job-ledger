@@ -29,6 +29,10 @@ export default function Content (props) {
     articles
   } = props
 
+  function createMarkup () {
+    return { __html: description }
+  }
+
   return (
     <Box
       className={classes.root}
@@ -120,6 +124,13 @@ export default function Content (props) {
             }}
           >
             {description}
+          </Typography>
+
+          <Typography
+            className={classes.richText}
+            // sx={{ mb: 2.3 }}
+          >
+            <div dangerouslySetInnerHTML={createMarkup()} />
           </Typography>
 
         </Box>

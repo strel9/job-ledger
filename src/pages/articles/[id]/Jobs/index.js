@@ -2,7 +2,7 @@ import React from 'react'
 
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
-import Button from 'components/Button'
+import Button from '@mui/material/Button'
 import Grid from '@mui/material/Unstable_Grid2'
 import CardJobs from 'components/CardJob'
 

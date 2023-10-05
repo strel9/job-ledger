@@ -6,7 +6,6 @@ import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
-// import Button from 'components/Button'
 
 // import HeroLogo from 'icons/HeroLogo'
 // import BackgroundGlow from 'icons/BackgroundGlow'
@@ -18,7 +17,7 @@ import styles from './styles'
 
 export default function HeroSection (props) {
   const classes = useClasses(styles)
-  const { jobsQuontity } = props
+  const { jobsCount } = props
 
   return (
     <Box sx={{
@@ -95,7 +94,7 @@ export default function HeroSection (props) {
             href={JOBS_LINK}
             // variant='outlined'
           >
-            See all {jobsQuontity} jobs
+            See all {jobsCount} jobs
           </Button>
         </Box>
       </Container>

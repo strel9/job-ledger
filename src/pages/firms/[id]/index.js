@@ -1,15 +1,12 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 
-import { API_URL } from 'constants/api'
-import { FIRMS_LINK, FIRMS_GET } from 'constants/links'
+import { API_URL, FIRMS_LINK, FIRM_DETAILS_GET } from 'constants/links'
 
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
-import Grid from '@mui/material/Unstable_Grid2'
 import Button from '@mui/material/Button'
 
 import LocationIcon from 'icons/LocationIcon'
@@ -20,42 +17,39 @@ import ArrowLeftIcon from 'icons/ArrowLeftIcon'
 import useClasses from 'hooks/useClasses'
 import styles from './styles'
 
+export const getServerSideProps = async (context) => {
+  const { id } = context.params
+
+  const response = await fetch(`${API_URL}${FIRM_DETAILS_GET}/${id}`)
+  const data = await response.json()
+  return {
+    props: { firm: data }
+  }
+}
+
 export default function FirmDetails (props) {
   const classes = useClasses(styles)
 
-  // const {} = props
-
-  const router = useRouter()
-  const { id: pathID } = router.query
-
-  const [firm, setFirm] = React.useState()
-
-  React.useEffect(() => {
-    fetch(`${API_URL}${FIRMS_GET}`)
-      .then((res) => {
-        return res.json()
-      })
-      .then((arr) => {
-        setFirm(arr)
-      })
-  }, [])
-
-  const itemCard = firm?.find(item => parseInt(item.id) === parseInt(pathID))
+  const { firm } = props
 
   const CARD_INFO = [
     {
       icon: <LocationIcon />,
-      title: itemCard?.location
+      title: firm?.location
     },
     {
       icon: <RankIcon />,
-      title: itemCard?.ranking
+      title: firm?.ranking
     },
     {
       icon: <RolesIcon />,
-      title: itemCard?.jobs_count
+      title: firm?.jobs_count
     }
   ]
+
+  function createMarkup () {
+    return { __html: firm?.about }
+  }
 
   return (
     <Box
@@ -94,7 +88,13 @@ export default function FirmDetails (props) {
 
         }}
         >
-          {itemCard?.logo}
+          <Image
+            src={firm?.firm_logo}
+            alt={firm?.firm_name}
+            width={280}
+            height={50}
+            priority
+          />
         </Box>
 
         <Box sx={{
@@ -108,7 +108,7 @@ export default function FirmDetails (props) {
             variant='h1'
             sx={{ fontWeight: 700, mb: 1.1 }}
           >
-            {itemCard?.name}
+            {firm?.name}
           </Typography>
 
           <Box sx={{ display: 'flex', mb: 4 }}>
@@ -170,7 +170,8 @@ export default function FirmDetails (props) {
               variant='body1'
               align='center'
             >
-              {itemCard?.about}
+              {/* {firm?.about} */}
+              <div dangerouslySetInnerHTML={createMarkup()} />
             </Typography>
           </Box>
 

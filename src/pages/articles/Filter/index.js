@@ -3,9 +3,10 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {
   setArticleSearch,
-  setArticleActive,
-  setFilteredArticles
+  setArticleActive
 } from 'redux/filter/slice'
+
+import { TOPIC_LIST } from 'constants/filters'
 
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
@@ -21,38 +22,8 @@ export default function ArticlesFilter () {
 
   const dispatch = useDispatch()
 
-  const articlesData = useSelector(state => state.data.articles)
-
   const articleSearch = useSelector(state => state.filter.articleSearch)
   const articleActive = useSelector(state => state.filter.articleActive)
-
-  const TOPIC_LIST = ['Innovation', 'Resumes & Interviews',
-    'Working remotely', 'Networking', 'Professional knowledge']
-
-  const applyFilters = () => {
-    let updatedList = articlesData
-
-    // Search Firm
-    if (articleSearch) {
-      updatedList = updatedList.filter(
-        (item) =>
-          item.name?.toLowerCase().search(articleSearch.toLowerCase().trim()) !==
-        -1
-      )
-    }
-
-    if (articleActive) {
-      updatedList = updatedList.filter(
-        (item) => item.topic?.toLowerCase() === articleActive.toLowerCase()
-      )
-    }
-
-    dispatch(setFilteredArticles(updatedList))
-  }
-
-  React.useEffect(() => {
-    applyFilters()
-  }, [articleSearch, articleActive])
 
   return (
     <Box

@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-import { useSelector, useDispatch } from 'react-redux'
+// import { useSelector, useDispatch } from 'react-redux'
 
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
@@ -21,11 +21,11 @@ import styles from './styles'
 
 export default function JobsActivePositions (props) {
   const classes = useClasses(styles)
-  const { data } = props
+  const { data, jobsCount } = props
 
-  const isLoading = useSelector(state => state.data.isLoading)
+  // const isLoading = useSelector(state => state.data.isLoading)
 
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
   return (
     <Box
@@ -38,8 +38,8 @@ export default function JobsActivePositions (props) {
       <Container>
         <Box
           sx={{
-
             display: 'flex',
+            flexDirection: { xs: 'column', sm: 'row' },
             justifyContent: 'space-between',
             alignItems: 'center',
             mb: 2.4
@@ -66,7 +66,7 @@ export default function JobsActivePositions (props) {
                 mr: 1,
                 fontSize: '18px'
               }}
-            >See all {data?.length} jobs
+            >See all {jobsCount} jobs
             </Box>
             <ArrowRightIcon />
           </Button>
@@ -77,19 +77,26 @@ export default function JobsActivePositions (props) {
           spacing={{ xs: 2, md: 2 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
-          {isLoading
+          {(data?.map((item, index) => (
+            index < 6 && (
+              <Grid xs={4} sm={4} md={4} key={index}>
+                <CardJobs {...item} />
+              </Grid>
+            ))
+          ))}
+          {/* {isLoading
             ? (Array.from(Array(6)).map((item, index) =>
-              <Grid xs={2} sm={4} md={4} key={index}>
+              <Grid xs={4} sm={4} md={4} key={index}>
                 <Skeleton variant='rounded' width={360} height={210} />
               </Grid>
               ))
             : (data.map((item, index) => (
                 index < 6 && (
-                  <Grid xs={2} sm={4} md={4} key={index}>
+                  <Grid xs={4} sm={4} md={4} key={index}>
                     <CardJobs {...item} />
                   </Grid>
                 ))
-              ))}
+              ))} */}
         </Grid>
       </Container>
     </Box>

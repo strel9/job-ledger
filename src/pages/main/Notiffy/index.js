@@ -4,7 +4,7 @@ import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
-import Button from 'components/Button'
+import Button from '@mui/material/Button'
 
 import useClasses from 'hooks/useClasses'
 import styles from './styles'

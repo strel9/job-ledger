@@ -35,6 +35,7 @@ export default function FirmsPopular (props) {
           // component='main'
           sx={{
             display: 'flex',
+            flexDirection: { xs: 'column', sm: 'row' },
             justifyContent: 'space-between',
             alignItems: 'center',
             mb: 2.4
@@ -43,6 +44,9 @@ export default function FirmsPopular (props) {
         >
           <Typography
             variant='h2'
+            sx={{
+              flexBasis: { xs: '60%' }
+            }}
           >
             <Box
               component='span'
@@ -71,10 +75,14 @@ export default function FirmsPopular (props) {
           </Button>
         </Box>
 
-        <Grid container spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+        <Grid
+          container
+          spacing={{ xs: 2, md: 2 }}
+          columns={{ xs: 4, sm: 8, md: 12 }}
+        >
           {data?.map((item, index) => (
             index < 6 && (
-              <Grid xs={2} sm={4} md={4} key={index}>
+              <Grid xs={4} sm={4} md={4} key={index}>
                 <CardFirms {...item} />
               </Grid>
             )

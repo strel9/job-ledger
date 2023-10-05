@@ -1,10 +1,9 @@
 import React from 'react'
 // import Image from 'next/image'
-import { useSelector, useDispatch } from 'react-redux'
-import { setJobs, setFirms, setArticles, setIsLoading } from 'redux/data/slice'
+// import { useSelector, useDispatch } from 'react-redux'
+// import { setJobs, setFirms, setArticles, setIsLoading } from 'redux/data/slice'
 
-import { API_URL } from 'constants/api'
-import { JOBS_GET, FIRMS_GET, ARTICLES_GET } from 'constants/links'
+import { API_URL, JOBS_GET, FIRMS_GET, ARTICLES_GET } from 'constants/links'
 
 import Hero from 'pages/main/HeroSection'
 import JobsActivePositions from 'pages/main/JobsActivePositionsSection'
@@ -18,46 +17,30 @@ import Box from '@mui/material/Box'
 // import useClasses from 'hooks/useClasses'
 // import styles from './styles'
 
+export const getStaticProps = async (context) => {
+  const responseJobs = await fetch(`${API_URL}${JOBS_GET}`)
+  const jobsData = await responseJobs.json()
+
+  const responseFirms = await fetch(`${API_URL}${FIRMS_GET}`)
+  const firms = await responseFirms.json()
+
+  const responseArticles = await fetch(`${API_URL}${ARTICLES_GET}`)
+  const articles = await responseArticles.json()
+  const isLoading = true
+
+  return {
+    props: {
+      jobs: jobsData.jobs,
+      jobsCount: jobsData.job_count,
+      firms,
+      articles,
+      isLoading
+    }
+  }
+}
+
 export default function Main (props) {
-  // const { Component, pageProps } = props
-  const dispatch = useDispatch()
-
-  React.useEffect(() => {
-    fetch(`${API_URL}${JOBS_GET}`)
-      .then((res) => {
-        return res.json()
-      })
-      .then((arr) => {
-        dispatch(setIsLoading(false))
-        dispatch(setJobs(arr))
-      })
-  }, [])
-
-  React.useEffect(() => {
-    fetch(`${API_URL}${FIRMS_GET}`)
-      .then((res) => {
-        return res.json()
-      })
-      .then((arr) => {
-        dispatch(setIsLoading(false))
-        dispatch(setFirms(arr))
-      })
-  }, [])
-
-  React.useEffect(() => {
-    fetch(`${API_URL}${ARTICLES_GET}`)
-      .then((res) => {
-        return res.json()
-      })
-      .then((arr) => {
-        dispatch(setIsLoading(false))
-        dispatch(setArticles(arr))
-      })
-  }, [])
-
-  const jobs = useSelector(state => state.data.jobs)
-  const firms = useSelector(state => state.data.firms)
-  const articles = useSelector(state => state.data.articles)
+  const { jobs, jobsCount, firms, articles, isLoading } = props
 
   return (
     <Box sx={{
@@ -77,8 +60,8 @@ export default function Main (props) {
         <BackgroundGlow layout='fill' alt='background' />
       </Box> */}
 
-      <Hero jobsQuontity={jobs.length} />
-      <JobsActivePositions data={jobs} />
+      <Hero jobsCount={jobsCount} />
+      <JobsActivePositions data={jobs} jobsCount={jobsCount} isLoading={isLoading} />
       {/* <Notiffy /> */}
       <FirmsPopular data={firms} />
       <ArticlesInsights data={articles} />

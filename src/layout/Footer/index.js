@@ -1,21 +1,18 @@
 import React from 'react'
-
 import Link from 'next/link'
+
+import { FOOTER_LINKS } from 'constants/links'
 
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import Divider from '@mui/material/Divider'
-// import Button from 'components/Button'
-// import Container from 'components/Container'
 import Container from '@mui/material/Container'
 
 import Logo from 'icons/Logo'
 import TwitterIcon from 'icons/TwitterIcon'
 import InIcon from 'icons/InIcon'
 import EllipseIcon from 'icons/EllipseIcon'
-
-import { FOOTER_LINKS } from 'constants/links'
 
 import useClasses from 'hooks/useClasses'
 import styles from './styles'
@@ -77,11 +74,14 @@ function Footer (props) {
               >
                 {FOOTER_LINKS.map((item, index) => (
                   <React.Fragment key={item}>
-                    <Button sx={{
-                      color: 'primary.black',
-                      fontSize: 18,
-                      fontWeight: 500
-                    }}
+                    <Button
+                      component={Link}
+                      href={item.link}
+                      sx={{
+                        color: 'primary.black',
+                        fontSize: 18,
+                        fontWeight: 500
+                      }}
                     >
                       {item.title}
                     </Button>
@@ -97,7 +97,7 @@ function Footer (props) {
                 variant='body1'
                 component='div'
               >
-                (c) 2023 Job Ledger. All rights reserved.
+                (c) 2023 Talent Ledger. All rights reserved.
               </Typography>
             </Box>
           </Box>

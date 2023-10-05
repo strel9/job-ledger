@@ -72,10 +72,14 @@ export default function ArticlesInsights (props) {
           </Button>
         </Box>
 
-        <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+        <Grid
+          container
+          spacing={{ xs: 2, md: 3 }}
+          columns={{ xs: 4, sm: 8, md: 12 }}
+        >
           {data?.map((item, index) => (
             index < 3 && (
-              <Grid xs={2} sm={4} md={4} key={index}>
+              <Grid xs={4} sm={4} md={4} key={index}>
                 <CardArticle {...item} />
               </Grid>)
           ))}

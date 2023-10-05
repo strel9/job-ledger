@@ -2,12 +2,13 @@ import React from 'react'
 
 import { useSelector, useDispatch } from 'react-redux'
 import {
-  setFilteredFirms,
   setFirmSearch,
   setFirmActive,
   setLocationSearch,
   setFirmRankMinMax
 } from 'redux/filter/slice'
+
+import { FIRMS_LIST } from 'constants/filters'
 
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
@@ -19,64 +20,15 @@ import SliderRange from 'components/SliderRange'
 import useClasses from 'hooks/useClasses'
 import styles from './styles'
 
-export default function FirmsFilter () {
+export default function FirmsFilter (props) {
   const classes = useClasses(styles)
 
   const dispatch = useDispatch()
-
-  const firmsData = useSelector(state => state.data.firms)
 
   const firmSearch = useSelector(state => state.filter.firmSearch)
   const firmRankMinMax = useSelector(state => state.filter.firmRankMinMax)
   const firmActive = useSelector(state => state.filter.firmActive)
   const locationSearch = useSelector(state => state.filter.locationSearch)
-
-  const FIRMS_LIST = ['Duncan & Toplis', 'MOORE']
-
-  const applyFilters = () => {
-    let updatedList = firmsData
-
-    if (firmSearch) {
-      updatedList = updatedList.filter(
-        (item) =>
-          item.name?.toLowerCase().search(firmSearch.toLowerCase().trim()) !==
-      -1
-      )
-    }
-
-    // Active Firm
-    if (firmActive) {
-      updatedList = updatedList.filter(
-        (item) => {
-          return (
-            item?.name?.toLowerCase() === firmActive.toLowerCase()
-          )
-        }
-      )
-    }
-
-    // Search Location
-    if (locationSearch) {
-      updatedList = updatedList.filter(
-        (item) =>
-          item.location?.toLowerCase().search(locationSearch.toLowerCase().trim()) !==
-        -1
-      )
-    }
-
-    // Rank Filter
-    const min = firmRankMinMax[0]
-    const max = firmRankMinMax[1]
-
-    updatedList = updatedList.filter(
-      (item) => parseInt(item?.ranking) >= min && item.ranking <= max
-    )
-
-    dispatch(setFilteredFirms(updatedList))
-  }
-  React.useEffect(() => {
-    applyFilters()
-  }, [firmRankMinMax, locationSearch, firmSearch, firmActive])
 
   return (
     <Box

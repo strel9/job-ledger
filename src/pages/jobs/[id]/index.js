@@ -1,9 +1,8 @@
 import React from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 
-import { API_URL } from 'constants/api'
-import { JOBS_GET } from 'constants/links'
+import { API_URL, JOB_DETAILS_GET, JOBS_LINK } from 'constants/links'
 
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
@@ -19,45 +18,37 @@ import DollarIcon from 'icons/DollarIcon'
 import useClasses from 'hooks/useClasses'
 import styles from './styles'
 
+export const getServerSideProps = async (context) => {
+  const { id } = context.params
+  const response = await fetch(`${API_URL}${JOB_DETAILS_GET}/${id}`)
+  const data = await response.json()
+  return {
+    props: { job: data }
+  }
+}
+
 export default function JobDetails (props) {
+  const { job } = props
+
   const classes = useClasses(styles)
-
-  // const { location, ranking, roles } = props
-
-  const router = useRouter()
-  const { id: pathID } = router.query
-
-  const [job, setJob] = React.useState()
-
-  const itemCard = job?.find(item => parseInt(item.id) === parseInt(pathID))
-
-  React.useEffect(() => {
-    fetch(`${API_URL}${JOBS_GET}`)
-      .then((res) => {
-        return res.json()
-      })
-      .then((arr) => {
-        setJob(arr)
-      })
-  }, [])
 
   const CARD_INFO = [
     {
       icon: <LocationIcon />,
-      title: itemCard?.location
+      title: job?.location
     },
     {
       icon: <WatchIcon />,
-      title: itemCard?.employment
+      title: job?.employment
     },
     {
       icon: <DollarIcon />,
-      title: itemCard?.salary
+      title: job?.salary
     }
   ]
 
-  function createMarkup() {
-    return {__html: itemCard?.description};
+  function createMarkup () {
+    return { __html: job?.description }
   }
 
   return (
@@ -72,7 +63,7 @@ export default function JobDetails (props) {
       <Container>
         <Button
           component={Link}
-          href={JOBS_GET}
+          href={JOBS_LINK}
         >
           <ArrowLeftIcon />
           <Box
@@ -95,7 +86,13 @@ export default function JobDetails (props) {
 
         }}
         >
-          {itemCard?.logo}
+          <Image
+            src={job?.firm_logo}
+            alt={job?.firm_name}
+            width={280}
+            height={50}
+            priority
+          />
         </Box>
 
         <Box sx={{
@@ -110,7 +107,7 @@ export default function JobDetails (props) {
             align='center'
             sx={{ fontWeight: 700, mb: 1.1 }}
           >
-            {itemCard?.job_title}
+            {job?.job_title}
           </Typography>
 
           <Typography
@@ -118,14 +115,10 @@ export default function JobDetails (props) {
             color='primary.darkGray'
             sx={{ fontWeight: 700, mb: 2.4 }}
           >
-            {itemCard?.service}
+            {job?.service}
           </Typography>
 
           <Box sx={{ display: 'flex', mb: 4 }}>
-            {/* <Grid
-            container spacing={{ xs: 1, md: 2 }}
-            columns={{ xs: 4, sm: 8, md: 12 }}
-          > */}
             {CARD_INFO.map((item, index) => (
               <Grid
                 key={index}
@@ -157,17 +150,17 @@ export default function JobDetails (props) {
                 </Typography>
               </Grid>
             ))}
-            {/* </Grid> */}
           </Box>
 
-          <Typography className={classes.richText}
-           sx={{ mb: 2.3 }}>
+          <Typography
+            className={classes.richText}
+            sx={{ mb: 2.3 }}
+          >
             <div dangerouslySetInnerHTML={createMarkup()} />
           </Typography>
 
           <Button
             variant='contained'
-            onClick={console.log('APPLY JOB')}
           >
             Apply for job
           </Button>
