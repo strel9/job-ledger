@@ -1,8 +1,9 @@
 
 // jobs
-export const SERVICES_LIST = ['Audit', 'Consulting', 'Deals',
-  'Economics', 'Forensics', 'Legal',
-  'Restructuring', 'Risk', 'Tax', 'Business Outsourcing Services']
+export const SERVICES_LIST = ['General Practice', 'Tax', 'Legal', 'Corporate Finance',
+  'Consulting', 'IT', 'Deals',
+  'Economics', 'Forensics',
+  'Restructuring', 'Risk']
 
 export const INDUSTRIES_LIST = ['Consumer', 'Energy & Utilities', 'Financial services',
   'Economics', 'Forensics', 'Legal',

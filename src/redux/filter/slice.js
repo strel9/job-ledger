@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  filteredJobs: [],
-  filteredFirms: [],
-  filteredArticles: [],
+  // filteredJobs: [],
+  // filteredFirms: [],
+  // filteredArticles: [],
   filterSearch: '',
   serviceActive: '',
   industryActive: '',

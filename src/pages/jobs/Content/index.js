@@ -93,38 +93,40 @@ export default function JobsContent (props) {
             }
       </Grid>
 
-      {!(jobs.length < 10) && jobsCount > 10 && (
-        <Box sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          pt: 3.2
-        }}
-        >
-          {/* <Stack spacing={2}>
-            <Pagination
-              count={jobsCount % 10}
-              page={offset / 10 + 1}
-              onChange={(event, value) => handleOffset(value * 10 - 10)}
-              variant='outlined' shape='rounded' color='primary'
-            />
-          </Stack> */}
+      <Box sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        pt: 3.2
+      }}
+      >
+        {/* <Stack spacing={2}>
+          <Pagination
+            count={jobsCount % 10}
+            page={offset / 10 + 1}
+            onChange={(event, value) => handleOffset(value * 10 - 10)}
+            variant='outlined' shape='rounded' color='primary'
+          />
+        </Stack> */}
 
+        {/* {!(jobs.length < 10) && jobsCount > 10  && ( */}
+        {!(jobsCount <= limit) && (
           <Button
             component={Link}
             // onClick={() => setOffset(offset + 10)}
             onClick={(e) => {
-              // e.preventDefault()
-              handleOffset(offset + 10)
+              e.preventDefault()
+              handleLimit(limit + 10)
             }}
-            href={`/jobs?page=${offset / 10}`}
+            // href={`/jobs?page=${offset / 10}`}
+            href='/jobs?page'
             variant='text'
           >
             See more jobs
           </Button>
-        </Box>
-      )}
+        )}
+      </Box>
     </Box>
   )
 }
