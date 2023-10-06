@@ -67,7 +67,6 @@ export default function CardJob (props) {
             justifyContent: 'space-between'
           }}
         >
-
           <Typography
             component='div'
             variant='h4'
@@ -124,42 +123,38 @@ export default function CardJob (props) {
           </div>
         </Box>
 
-        {!variantCard && (
-          <Box
-            className={classes.cardFooter}
+        <Box
+          className={classes.cardFooter}
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            backgroundColor: 'primary.ultraLightBlue',
+            pl: '24px',
+            pr: '44px',
+            minHeight: 58,
+            borderBottomLeftRadius: 16,
+            borderBottomRightRadius: 16
+          }}
+        >
+          <Typography
+            variant='body1'
+            color='primary.black'
             sx={{
-              display: 'flex',
-              alignItems: 'center',
-              bgcolor: 'primary.ultraLightBlue',
-              pl: '24px',
-              pr: '44px',
-              minHeight: 58,
-              borderBottomLeftRadius: 16,
-              borderBottomRightRadius: 16
+              fontWeight: 600,
+              paddingRight: '16px'
             }}
           >
-            <Typography
-              className={classes.cardFooterText}
-              variant='body1'
-              color='primary.black'
-              sx={{
-                fontWeight: 600,
-                paddingRight: '16px'
-              }}
-            >
-              By
-            </Typography>
+            By
+          </Typography>
 
-            <Image
-              src={firmLogo}
-              alt={firmName}
-              width={280}
-              height={50}
-              priority
-            />
-
-          </Box>
-        )}
+          <Image
+            src={firmLogo}
+            alt={firmName}
+            width={280}
+            height={50}
+            priority
+          />
+        </Box>
       </Box>
     </Box>
   )
