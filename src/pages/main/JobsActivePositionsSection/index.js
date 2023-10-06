@@ -47,6 +47,7 @@ export default function JobsActivePositions (props) {
         >
           <Typography
             variant='h2'
+            color='primary.black'
           >
             <Box
               component='span'

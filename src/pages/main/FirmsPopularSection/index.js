@@ -44,6 +44,7 @@ export default function FirmsPopular (props) {
         >
           <Typography
             variant='h2'
+            color='primary.black'
             sx={{
               flexBasis: { xs: '60%' }
             }}

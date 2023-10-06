@@ -43,7 +43,10 @@ export default function ArticlesInsights (props) {
           }}
         >
 
-          <Typography variant='h2'>
+          <Typography
+            variant='h2'
+            color='primary.black'
+          >
             <Box
               component='span'
               sx={{
