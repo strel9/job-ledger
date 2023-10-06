@@ -73,7 +73,7 @@ export default function CardJob (props) {
             variant='h4'
             sx={{ mb: 0.8 }}
           >
-            {id} {jobTitle}
+            {jobTitle}
           </Typography>
           <div>
             <Typography
