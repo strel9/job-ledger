@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import { styled } from '@mui/material/styles'
 // import { useSelector } from 'react-redux'
 
 import { ARTICLES_LINK } from 'constants/links'
@@ -10,39 +11,50 @@ import Button from '@mui/material/Button'
 import CardMedia from '@mui/material/CardMedia'
 import Avatar from '@mui/material/Avatar'
 
-import CardArticle from 'components/CardArticle'
-
 import ArrowLeftIcon from 'icons/ArrowLeftIcon'
 import ArticleIcon from 'icons/ArticleIcon'
 
-import useClasses from 'hooks/useClasses'
-import styles from './styles'
+// import useClasses from 'hooks/useClasses'
+// import styles from './styles'
 
 // const isLoading = useSelector(state => state.data.isLoading)
 
-export const getServerSideProps = async (context) => {
-  return {
-    props: {
-    }
-  }
-}
+// export const getServerSideProps = async (context) => {
+//   return {
+//     props: {
+//     }
+//   }
+// }
 
 export default function Content (props) {
-  const classes = useClasses(styles)
+  // const classes = useClasses(styles)
   const {
-    id, body, title,
-    description, tagline,
-    writer_image, writer_name, updated_at,
+    id,
+    body,
+    title,
+    description,
+    tagline,
+    writer_image,
+    writer_name,
+    updated_at,
     articles
   } = props
+
+  const Root = styled('div')(({ theme }) => ({
+    '& .MuiCardMedia-root': {
+      // padding: '24px',
+      borderTopLeftRadius: '32px',
+      borderTopRightRadius: '32px'
+    }
+  }))
 
   function createMarkup () {
     return { __html: description }
   }
 
   return (
-    <Box
-      className={classes.root}
+    <Root
+      // className={classes.root}
       sx={{
         flexBasis: '60%'
       }}
@@ -160,6 +172,6 @@ export default function Content (props) {
         </Box>
 
       </Box>
-    </Box>
+    </Root>
   )
 }

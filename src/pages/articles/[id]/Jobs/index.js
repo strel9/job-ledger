@@ -9,12 +9,12 @@ import CardJobs from 'components/CardJob'
 // import useClasses from 'hooks/useClasses'
 // import styles from './styles'
 
-export const getServerSideProps = async (context) => {
-  return {
-    props: {
-    }
-  }
-}
+// export const getServerSideProps = async (context) => {
+//   return {
+//     props: {
+//     }
+//   }
+// }
 
 export default function Filter (props) {
   // const classes = useClasses(styles)
@@ -40,7 +40,7 @@ export default function Filter (props) {
       </Typography>
 
       <Grid
-        className={classes.positions}
+        // className={classes.positions}
         container
         spacing={{ xs: 2, md: 2 }}
         columns={{ xs: 12, sm: 12, md: 12 }}

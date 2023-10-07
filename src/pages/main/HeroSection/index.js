@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import { styled } from '@mui/material/styles'
 
 import Box from '@mui/material/Box'
 // import MenuIcon from '@mui/icons-material/Menu'
@@ -12,12 +13,47 @@ import Button from '@mui/material/Button'
 
 import { JOBS_LINK } from 'constants/links'
 
-import useClasses from 'hooks/useClasses'
-import styles from './styles'
+// import useClasses from 'hooks/useClasses'
+// import styles from './styles'
 
 export default function HeroSection (props) {
-  const classes = useClasses(styles)
+  // const classes = useClasses(styles)
   const { jobsCount } = props
+
+  // const z = styled('div')(({ theme }) => ({
+
+  // }))
+
+  const ButtonStyled = styled(Button)(({ theme }) => ({
+    minWidth: '428px',
+    color: '#FAFAFA',
+    // fontSize: '18px',
+    // color: `linear-gradient(to bottom, ${palette.lightBlue} 29%, ${palette.purple} 81%)`,
+    backgroundImage: 'linear-gradient(to right, #46C1EB 29%, #7967ED 81%)',
+    // transition: 'background-color 2s ease-out 100ms',
+    // transition: '0.3s',
+    // border: [['100px', 'solid', '#4780ED']],
+    // border: 'none'
+    // borderRadius: '100px'
+    // borderWidth: '4px',
+    // borderStyle: 'solid'
+    // borderImage: 'linear-gradient(to right, #46C1EB, #7D5FEC) 1'
+    // background:
+    // `
+    // linear-gradient(${'white'}, ${'white'}) padding-box,
+    // linear-gradient(${'to right'}, ${'#46C1EB'}, ${'#7967ED'}) border-box
+    // `,
+    // // borderRadius: '80px',
+    // border: [['104px', 'solid', 'transparent']]
+
+    // [breakpoints.down('sm')]: {
+    //   minWidth: '140px'
+    // },
+
+    '&:hover': {
+      backgroundImage: 'linear-gradient(to right, #46C1EB 0%, #7967ED 91%)'
+    }
+  }))
 
   return (
     <Box sx={{
@@ -56,7 +92,7 @@ export default function HeroSection (props) {
           }}
         >
           <Typography
-            className={classes.title}
+            // className={classes.title}
             variant='h1'
             textAlign='center'
             color='primary.purple'
@@ -88,14 +124,14 @@ export default function HeroSection (props) {
             <span>TOP FIRMS</span>
           </Typography>
 
-          <Button
-            className={classes.btn}
+          <ButtonStyled
+            // className={classes.btn}
             component={Link}
             href={JOBS_LINK}
             // variant='outlined'
           >
             See all {jobsCount} jobs
-          </Button>
+          </ButtonStyled>
         </Box>
       </Container>
     </Box>

@@ -9,13 +9,13 @@ import InputAdornment from '@mui/material/InputAdornment'
 import TextField from '@mui/material/TextField'
 import Grid from '@mui/material/Unstable_Grid2'
 
-import useClasses from 'hooks/useClasses'
-import styles from './styles'
+// import useClasses from 'hooks/useClasses'
+// import styles from './styles'
 
 export default function SliderRange (props) {
   const { title, isSalary, value, setValue, max, step } = props
 
-  const classes = useClasses(styles)
+  // const classes = useClasses(styles)
 
   const dispatch = useDispatch()
 
@@ -36,9 +36,7 @@ export default function SliderRange (props) {
   }
 
   return (
-    <Box
-      className={classes.root}
-    >
+    <Box >
       <Typography
         variant='h4' color='primary.darkGray'
         sx={{ mt: 2.4, mb: 1.6 }}
@@ -64,7 +62,7 @@ export default function SliderRange (props) {
         <Grid item md={6} style={{ textAlign: 'right' }}>
 
           <TextField
-            className={classes.texfield}
+            // className={classes.texfield}
             label={`Min ${title}`}
             // focused
             value={value[0]}
@@ -99,7 +97,7 @@ export default function SliderRange (props) {
 
         <Grid item md={6} style={{ textAlign: 'left' }}>
           <TextField
-            className={classes.texfield}
+            // className={classes.texfield}
             label={`Max ${title}`}
             // focused
             value={value[1]}
