@@ -14,11 +14,11 @@ import Typography from '@mui/material/Typography'
 import Search from 'components/Search'
 import FilterCategories from 'components/FilterCategories'
 
-import useClasses from 'hooks/useClasses'
-import styles from './styles'
+// import useClasses from 'hooks/useClasses'
+// import styles from './styles'
 
 export default function ArticlesFilter () {
-  const classes = useClasses(styles)
+  // const classes = useClasses(styles)
 
   const dispatch = useDispatch()
 
@@ -27,7 +27,7 @@ export default function ArticlesFilter () {
 
   return (
     <Box
-      className={classes.root}
+      // className={classes.root}
       sx={{
         flexBasis: '30%',
         pr: 2

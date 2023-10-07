@@ -1,7 +1,4 @@
-export default ({ palette }) => {
+export default () => {
   return {
-    root: {
-
-    }
   }
 }
