@@ -15,8 +15,8 @@ import LocationIcon from 'icons/LocationIcon'
 import WatchIcon from 'icons/WatchIcon'
 import DollarIcon from 'icons/DollarIcon'
 
-import useClasses from 'hooks/useClasses'
-import styles from './styles'
+// import useClasses from 'hooks/useClasses'
+// import styles from './styles'
 
 export const getServerSideProps = async (context) => {
   const { id } = context.params
@@ -30,7 +30,7 @@ export const getServerSideProps = async (context) => {
 export default function JobDetails (props) {
   const { job } = props
 
-  const classes = useClasses(styles)
+  // const classes = useClasses(styles)
 
   const CARD_INFO = [
     {
@@ -53,7 +53,7 @@ export default function JobDetails (props) {
 
   return (
     <Box
-      className={classes.root}
+      // className={classes.root}
       sx={{
         pt: 14.8,
         pb: 10,
@@ -152,12 +152,13 @@ export default function JobDetails (props) {
             ))}
           </Box>
 
-          <Typography
-            className={classes.richText}
-            sx={{ mb: 2.3 }}
-          >
-            <div dangerouslySetInnerHTML={createMarkup()} />
-          </Typography>
+          <Box
+            sx={{
+              mb: 2.3,
+              color: '#242A35'
+            }}
+            dangerouslySetInnerHTML={createMarkup()}
+          />
 
           <Button
             variant='contained'

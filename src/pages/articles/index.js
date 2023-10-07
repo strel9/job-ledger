@@ -12,11 +12,18 @@ import Container from '@mui/material/Container'
 import Filter from './Filter'
 import Content from './Content'
 
-import useClasses from 'hooks/useClasses'
-import styles from './styles'
+// import useClasses from 'hooks/useClasses'
+// import styles from './styles'
+
+export const getServerSideProps = async (context) => {
+  return {
+    props: {
+    }
+  }
+}
 
 export default function ArticlesPage (props) {
-  const classes = useClasses(styles)
+  // const classes = useClasses(styles)
 
   const [articlesData, setArticlesData] = React.useState([])
   const [isLoading, setIsLoading] = React.useState(true)
@@ -50,7 +57,7 @@ export default function ArticlesPage (props) {
 
   return (
     <Box
-      className={classes.root}
+      // className={classes.root}
       component='div'
       sx={{
         pt: 14.8,

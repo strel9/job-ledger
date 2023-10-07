@@ -9,8 +9,8 @@ import Container from '@mui/material/Container'
 import Filter from './Filter'
 import Content from './Content'
 
-import useClasses from 'hooks/useClasses'
-import styles from './styles'
+// import useClasses from 'hooks/useClasses'
+// import styles from './styles'
 
 export const getServerSideProps = async ({ query }) => {
   const page = await query.page || 0
@@ -23,7 +23,7 @@ export const getServerSideProps = async ({ query }) => {
 }
 
 export default function JobsPage (props) {
-  const classes = useClasses(styles)
+  // const classes = useClasses(styles)
 
   const [jobsData, setJobsData] = React.useState([])
   const [jobsCount, setJobsCount] = React.useState()
@@ -74,7 +74,7 @@ export default function JobsPage (props) {
 
   return (
     <Box
-      className={classes.root}
+      // className={classes.root}
       component='div'
       sx={{
         pt: 14.8,

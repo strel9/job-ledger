@@ -20,6 +20,13 @@ import styles from './styles'
 
 // const isLoading = useSelector(state => state.data.isLoading)
 
+export const getServerSideProps = async (context) => {
+  return {
+    props: {
+    }
+  }
+}
+
 export default function Content (props) {
   const classes = useClasses(styles)
   const {
@@ -126,12 +133,7 @@ export default function Content (props) {
             {description}
           </Typography>
 
-          <Typography
-            className={classes.richText}
-            // sx={{ mb: 2.3 }}
-          >
-            <div dangerouslySetInnerHTML={createMarkup()} />
-          </Typography>
+          <Typography dangerouslySetInnerHTML={createMarkup()} />
 
         </Box>
 

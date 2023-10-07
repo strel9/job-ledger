@@ -13,11 +13,18 @@ import CardArticle from 'components/CardArticle'
 
 import EllipseIcon from 'icons/EllipseIcon'
 
-import useClasses from 'hooks/useClasses'
-import styles from './styles'
+// import useClasses from 'hooks/useClasses'
+// import styles from './styles'
+
+export const getServerSideProps = async (context) => {
+  return {
+    props: {
+    }
+  }
+}
 
 export default function ArticlesContent (props) {
-  const classes = useClasses(styles)
+  // const classes = useClasses(styles)
 
   const {
     articlesData, isLoading, offset, limit,
@@ -32,7 +39,7 @@ export default function ArticlesContent (props) {
 
   return (
     <Box
-      className={classes.root}
+      // className={classes.root}
       sx={{
         flexBasis: '70%'
       }}

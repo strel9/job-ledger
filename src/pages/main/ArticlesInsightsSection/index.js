@@ -11,24 +11,25 @@ import CardArticle from 'components/CardArticle'
 
 import ArrowRightIcon from 'icons/ArrowRightIcon'
 
-import useClasses from 'hooks/useClasses'
-import styles from './styles'
+// import useClasses from 'hooks/useClasses'
+// import styles from './styles'
 
 import { ARTICLES_LINK } from 'constants/links'
 
 export default function ArticlesInsights (props) {
-  const classes = useClasses(styles)
+  // const classes = useClasses(styles)
   const { data } = props
 
   return (
     <Box
-      className={classes.root}
+      // className={classes.root}
       component='main'
       sx={{
         display: 'flex',
         flexDirection: 'column',
         paddingTop: 5,
         paddingBottom: 10
+        // backgroundColor: '#F7F7F7'
       }}
 
     >

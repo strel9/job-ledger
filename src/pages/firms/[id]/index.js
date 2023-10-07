@@ -14,8 +14,8 @@ import RankIcon from 'icons/RankIcon'
 import RolesIcon from 'icons/RolesIcon'
 import ArrowLeftIcon from 'icons/ArrowLeftIcon'
 
-import useClasses from 'hooks/useClasses'
-import styles from './styles'
+// import useClasses from 'hooks/useClasses'
+// import styles from './styles'
 
 export const getServerSideProps = async (context) => {
   const { id } = context.params
@@ -28,7 +28,7 @@ export const getServerSideProps = async (context) => {
 }
 
 export default function FirmDetails (props) {
-  const classes = useClasses(styles)
+  // const classes = useClasses(styles)
 
   const { firm } = props
 
@@ -53,7 +53,7 @@ export default function FirmDetails (props) {
 
   return (
     <Box
-      className={classes.root}
+      // className={classes.root}
       sx={{
         pt: 14.8,
         pb: 10,

@@ -8,6 +8,13 @@ import Grid from '@mui/material/Unstable_Grid2'
 
 import CardArticle from 'components/CardArticle'
 
+export const getServerSideProps = async (context) => {
+  return {
+    props: {
+    }
+  }
+}
+
 export default function ArticlesBlock (props) {
   const { articles } = props
 

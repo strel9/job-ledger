@@ -19,11 +19,11 @@ import FiltersStack from './FiltersStack'
 
 import EllipseIcon from 'icons/EllipseIcon'
 
-import useClasses from 'hooks/useClasses'
-import styles from './styles'
+// import useClasses from 'hooks/useClasses'
+// import styles from './styles'
 
 export default function JobsContent (props) {
-  const classes = useClasses(styles)
+  // const classes = useClasses(styles)
   const {
     jobs, jobsCount, isLoading, offset, limit,
     handleOffset, handleLimit
@@ -38,7 +38,7 @@ export default function JobsContent (props) {
 
   return (
     <Box
-      className={classes.root}
+      // className={classes.root}
       sx={{
         flexBasis: '70%'
       }}

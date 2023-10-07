@@ -6,11 +6,18 @@ import Button from '@mui/material/Button'
 import Grid from '@mui/material/Unstable_Grid2'
 import CardJobs from 'components/CardJob'
 
-import useClasses from 'hooks/useClasses'
-import styles from './styles'
+// import useClasses from 'hooks/useClasses'
+// import styles from './styles'
+
+export const getServerSideProps = async (context) => {
+  return {
+    props: {
+    }
+  }
+}
 
 export default function Filter (props) {
-  const classes = useClasses(styles)
+  // const classes = useClasses(styles)
   const { data } = props
 
   const [isSeeMoreList, setIsSeeMoreList] = React.useState(3)

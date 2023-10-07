@@ -16,11 +16,11 @@ import ArrowRightIcon from 'icons/ArrowRightIcon'
 
 import { JOBS_LINK } from 'constants/links'
 
-import useClasses from 'hooks/useClasses'
-import styles from './styles'
+// import useClasses from 'hooks/useClasses'
+// import styles from './styles'
 
 export default function JobsActivePositions (props) {
-  const classes = useClasses(styles)
+  // const classes = useClasses(styles)
   const { data, jobsCount } = props
 
   // const isLoading = useSelector(state => state.data.isLoading)
@@ -29,7 +29,7 @@ export default function JobsActivePositions (props) {
 
   return (
     <Box
-      className={classes.root}
+      // className={classes.root}
       sx={{
         pb: 10
         // bgcolor: 'primary.bg'

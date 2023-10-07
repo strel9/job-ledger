@@ -12,16 +12,16 @@ import ArrowRightIcon from 'icons/ArrowRightIcon'
 
 import { FIRMS_LINK } from 'constants/links'
 
-import useClasses from 'hooks/useClasses'
-import styles from './styles'
+// import useClasses from 'hooks/useClasses'
+// import styles from './styles'
 
 export default function FirmsPopular (props) {
-  const classes = useClasses(styles)
+  // const classes = useClasses(styles)
   const { data } = props
 
   return (
     <Box
-      className={classes.root}
+      // className={classes.root}
       sx={{
         // display: 'flex',
         // alignItems: 'center',

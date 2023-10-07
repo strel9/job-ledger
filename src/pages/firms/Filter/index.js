@@ -17,11 +17,11 @@ import Search from 'components/Search'
 import FilterCategories from 'components/FilterCategories'
 import SliderRange from 'components/SliderRange'
 
-import useClasses from 'hooks/useClasses'
-import styles from './styles'
+// import useClasses from 'hooks/useClasses'
+// import styles from './styles'
 
 export default function FirmsFilter (props) {
-  const classes = useClasses(styles)
+  // const classes = useClasses(styles)
 
   const dispatch = useDispatch()
 
@@ -32,7 +32,7 @@ export default function FirmsFilter (props) {
 
   return (
     <Box
-      className={classes.root}
+      // className={classes.root}
       sx={{
         flexBasis: '30%',
         pr: 2

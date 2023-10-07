@@ -8,8 +8,8 @@ import Container from '@mui/material/Container'
 import Jobs from './Jobs'
 import Content from './Content'
 
-import useClasses from 'hooks/useClasses'
-import styles from './styles'
+// import useClasses from 'hooks/useClasses'
+// import styles from './styles'
 import ArticlesBlock from './Articles'
 
 export const getServerSideProps = async (context) => {
@@ -34,7 +34,7 @@ export const getServerSideProps = async (context) => {
 }
 
 export default function ArticleDetails (props) {
-  const classes = useClasses(styles)
+  // const classes = useClasses(styles)
   const { article, articles, jobs } = props
 
   return (
