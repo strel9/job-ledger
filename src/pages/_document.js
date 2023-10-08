@@ -17,6 +17,12 @@ export default function Document () {
           gtag('config', 'G-3ZCXN2P33Y');
         `}
         </Script>
+
+        <Script>
+          {`
+          window.$crisp=[];window.CRISP_WEBSITE_ID="58b1471e-413e-4766-b017-4e1088c6beac";(function(){ d=document;s=d.createElement("script"); s.src="https://client.crisp.chat/l.js"; s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})(); 
+        `}
+        </Script>
       </Head>
 
       <body>
