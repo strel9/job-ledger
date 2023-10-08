@@ -120,19 +120,20 @@ export default function JobDetails (props) {
 
           <Box sx={{ display: 'flex', mb: 4 }}>
             {CARD_INFO.map((item, index) => (
-              <Grid
+              <Box
                 key={index}
-                xs={2} sm={4} md={6}
                 sx={{
                   display: 'flex',
-                  alignItems: 'center'
+                  alignItems: 'center',
+                  ...(index > 0 && {
+                    marginLeft: 2.4
+                  })
                 }}
               >
                 <Box sx={{
                   display: 'flex',
                   justifyContent: 'center',
                   alignItems: 'center',
-                  ml: 2.4,
                   mr: 0.8
                 }}
                 >
@@ -148,7 +149,7 @@ export default function JobDetails (props) {
                   }}
                 >{item.title}
                 </Typography>
-              </Grid>
+              </Box>
             ))}
           </Box>
 

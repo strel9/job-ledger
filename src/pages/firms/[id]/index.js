@@ -38,20 +38,23 @@ export const getServerSideProps = async (context) => {
 
 export default function FirmDetails (props) {
   // const classes = useClasses(styles)
-  const { firm, jobs } = props
+  const { firm, jobs, iSnumber = true } = props
 
   const CARD_INFO = [
     {
       icon: <LocationIcon />,
-      title: firm?.location
+      title: firm?.location,
+      number: ''
     },
     {
       icon: <RankIcon />,
-      title: firm?.ranking
+      title: 'Ranking',
+      number: firm?.ranking
     },
     {
       icon: <RolesIcon />,
-      title: firm?.jobs_count
+      title: 'Roles live',
+      number: firm?.jobs_count
     }
   ]
 
@@ -117,7 +120,8 @@ export default function FirmDetails (props) {
 
           <Box sx={{
             display: 'flex',
-            alignItems: 'center'
+            alignItems: 'center',
+            mb: 2
           }}
           >
             {CARD_INFO.map((item, index) => (
@@ -127,13 +131,18 @@ export default function FirmDetails (props) {
                   display: 'flex',
                   justifyContent: 'center',
                   alignItems: 'center',
-                  marginRight: 0.8,
                   ...(index > 0 && {
                     marginLeft: 2.4
                   })
                 }}
               >
-                <Box>
+                <Box sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  mr: 0.8
+                }}
+                >
                   {item.icon}
                 </Box>
 
@@ -145,6 +154,19 @@ export default function FirmDetails (props) {
                   }}
                 >{item.title}
                 </Typography>
+
+                {iSnumber && (
+                  <Typography
+                    variant='body1'
+                    color='primary.black'
+                    sx={{
+                      fontWeight: 600,
+                      ml: 0.8,
+                      fontSize: '20px'
+                    }}
+                  >{item.number}
+                  </Typography>
+                )}
               </Box>
             ))}
           </Box>
