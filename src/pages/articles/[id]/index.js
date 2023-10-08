@@ -39,7 +39,7 @@ export default function ArticleDetails (props) {
 
   return (
     <Box
-      className={classes.root}
+      // className={classes.root}
       component='div'
       sx={{
         pt: 14.8,
