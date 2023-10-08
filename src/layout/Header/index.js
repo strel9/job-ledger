@@ -120,7 +120,7 @@ function DrawerAppBar (props) {
             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
               {NAV_ITEMS.map((item, index) => (
                 <Button
-                  key={item.title}
+                  key={item.title + index}
                   component={Link}
                   href={item.link}
                   sx={{
@@ -136,7 +136,7 @@ function DrawerAppBar (props) {
                     })
                   }}
                 >
-                  {item.title + index}
+                  {item.title}
                 </Button>
               ))}
             </Box>
