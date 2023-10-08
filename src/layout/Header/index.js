@@ -136,7 +136,7 @@ function DrawerAppBar (props) {
                     })
                   }}
                 >
-                  {item.title}
+                  {item.title + index}
                 </Button>
               ))}
             </Box>

@@ -42,12 +42,12 @@ export default function FilterCategories (props) {
       >
         {categories.map((item, index) => index < isOpenMoreCategory && (
           <Chip
-            key={index}
+            key={item + index}
             label={item}
-            color={activeCategory === item ? 'secondary' : 'primary'}
+            color={activeCategory === item.toString() ? 'secondary' : 'primary'}
               // color='primary'
             variant='outlined'
-            onClick={() => (activeCategory === item
+            onClick={() => (activeCategory === item.toString()
               ? removeCategory(item)
               : addCategory(item))}
           />

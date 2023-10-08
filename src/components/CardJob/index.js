@@ -89,7 +89,7 @@ export default function CardJob (props) {
             >
               {CARD_JOB_ICONS.map((item, index) => (
                 <Grid
-                  key={index}
+                  key={item + index}
                   sm={8}
                   md={12}
                   lg={6}

@@ -79,6 +79,7 @@ export default function index (props) {
           inputProps={{ 'aria-label': 'search' }}
           value={value}
           onChange={onChange}
+          name={`search ${title}`}
         />
 
         <SearchIconWrapper>

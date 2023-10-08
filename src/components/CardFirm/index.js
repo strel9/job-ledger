@@ -75,7 +75,7 @@ export default function CardFirms (props) {
       >
         {CARD_FIRM_ICONS.map((item, index) => (
           <Box
-            key={index}
+            key={item + index}
             sx={{
               display: 'flex',
               justifyContent: 'space-between',

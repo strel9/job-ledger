@@ -73,7 +73,7 @@ function Footer (props) {
               }}
               >
                 {FOOTER_LINKS.map((item, index) => (
-                  <React.Fragment key={item}>
+                  <React.Fragment key={item + index}>
                     <Button
                       component={Link}
                       href={item.link}
