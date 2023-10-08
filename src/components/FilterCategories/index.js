@@ -44,10 +44,10 @@ export default function FilterCategories (props) {
           <Chip
             key={item + index}
             label={item}
-            color={activeCategory === item.toString() ? 'secondary' : 'primary'}
+            color={activeCategory === item ? 'secondary' : 'primary'}
               // color='primary'
             variant='outlined'
-            onClick={() => (activeCategory === item.toString()
+            onClick={() => (activeCategory === item
               ? removeCategory(item)
               : addCategory(item))}
           />

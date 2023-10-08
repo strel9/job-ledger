@@ -36,7 +36,7 @@ export default function SliderRange (props) {
   }
 
   return (
-    <Box >
+    <div>
       <Typography
         variant='h4' color='primary.darkGray'
         sx={{ mt: 2.4, mb: 1.6 }}
@@ -59,7 +59,7 @@ export default function SliderRange (props) {
         columns={{ xs: 4, sm: 8, md: 13 }}
         sx={{ mt: 1.6 }}
       >
-        <Grid item md={6} style={{ textAlign: 'right' }}>
+        <Grid md={6} style={{ textAlign: 'right' }}>
 
           <TextField
             // className={classes.texfield}
@@ -93,9 +93,9 @@ export default function SliderRange (props) {
           />
         </Grid>
 
-        <Grid item xs={1} style={{ textAlign: 'center' }} />
+        <Grid xs={1} style={{ textAlign: 'center' }} />
 
-        <Grid item md={6} style={{ textAlign: 'left' }}>
+        <Grid md={6} style={{ textAlign: 'left' }}>
           <TextField
             // className={classes.texfield}
             label={`Max ${title}`}
@@ -128,6 +128,6 @@ export default function SliderRange (props) {
           />
         </Grid>
       </Grid>
-    </Box>
+    </div>
   )
 }
