@@ -2,8 +2,6 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { styled } from '@mui/material/styles'
-
 import { API_URL, FIRMS_LINK, FIRM_DETAILS_GET, JOBS_BY_FIRM_GET } from 'constants/links'
 
 import Container from '@mui/material/Container'
@@ -41,23 +39,6 @@ export const getServerSideProps = async (context) => {
 export default function FirmDetails (props) {
   // const classes = useClasses(styles)
   const { firm, jobs } = props
-
-  const IconItemWrapper = styled('div')(({ theme }) => ({
-    display: 'flex',
-    alignItems: 'center',
-
-    '& > *:not(first-child)': {
-      marginLeft: 24
-    }
-  }))
-
-  const IconItem = styled('div')(({ theme }) => ({
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    // ml: 2.4,
-    mr: 0.8
-  }))
 
   const CARD_INFO = [
     {
@@ -134,9 +115,24 @@ export default function FirmDetails (props) {
             {firm?.name}
           </Typography>
 
-          <IconItemWrapper sx={{ display: 'flex' }}>
+          <Box sx={{
+            display: 'flex',
+            alignItems: 'center'
+          }}
+          >
             {CARD_INFO.map((item, index) => (
-              <IconItem key={index}>
+              <Box
+                key={index}
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginRight: 0.8,
+                  ...(index > 0 && {
+                    marginLeft: 2.4
+                  })
+                }}
+              >
                 <Box>
                   {item.icon}
                 </Box>
@@ -149,9 +145,9 @@ export default function FirmDetails (props) {
                   }}
                 >{item.title}
                 </Typography>
-              </IconItem>
+              </Box>
             ))}
-          </IconItemWrapper>
+          </Box>
 
           <TabsComponent firm={firm} jobs={jobs} />
 
