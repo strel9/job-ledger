@@ -6,7 +6,7 @@ export const JOBS_GET = '/get-all-jobs'
 export const JOBS_LINK = '/jobs'
 export const JOB_DETAILS_GET = '/get-job'
 export const JOB_DETAILS_LINK = '/jobs'
-// export const JOBS_BY_FIRM_GET = '/get-jobs-by-firm/firmId'
+export const JOBS_BY_FIRM_GET = '/get-jobs-by-firm'
 
 export const FIRMS_GET = '/get-all-firms'
 export const FIRMS_LINK = '/firms'
@@ -17,7 +17,7 @@ export const ARTICLES_GET = '/get-all-articles'
 export const ARTICLES_LINK = '/articles'
 export const ARTICLE_DETAILS_GET = '/get-article'
 export const ARTICLE_DETAILS_LINK = '/articles'
-// export const ARTICLES_BY_FIRM_GET = '/get-articles-by-firm/firmId'
+export const ARTICLES_BY_FIRM_GET = '/get-articles-by-firm'
 
 export const NAV_ITEMS = [
   {

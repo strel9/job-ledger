@@ -2,12 +2,16 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { API_URL, FIRMS_LINK, FIRM_DETAILS_GET } from 'constants/links'
+import { styled } from '@mui/material/styles'
+
+import { API_URL, FIRMS_LINK, FIRM_DETAILS_GET, JOBS_BY_FIRM_GET } from 'constants/links'
 
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
+
+import TabsComponent from './TabsComponent'
 
 import LocationIcon from 'icons/LocationIcon'
 import RankIcon from 'icons/RankIcon'
@@ -22,15 +26,38 @@ export const getServerSideProps = async (context) => {
 
   const response = await fetch(`${API_URL}${FIRM_DETAILS_GET}/${id}`)
   const data = await response.json()
+
+  const responseJobs = await fetch(`${API_URL}${JOBS_BY_FIRM_GET}/${id}`)
+  const jobsData = await responseJobs.json()
+
   return {
-    props: { firm: data }
+    props: {
+      firm: data,
+      jobs: jobsData
+    }
   }
 }
 
 export default function FirmDetails (props) {
   // const classes = useClasses(styles)
+  const { firm, jobs } = props
 
-  const { firm } = props
+  const IconItemWrapper = styled('div')(({ theme }) => ({
+    display: 'flex',
+    alignItems: 'center',
+
+    '& > *:not(first-child)': {
+      marginLeft: 24
+    }
+  }))
+
+  const IconItem = styled('div')(({ theme }) => ({
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    // ml: 2.4,
+    mr: 0.8
+  }))
 
   const CARD_INFO = [
     {
@@ -46,10 +73,6 @@ export default function FirmDetails (props) {
       title: firm?.jobs_count
     }
   ]
-
-  function createMarkup () {
-    return { __html: firm?.about }
-  }
 
   return (
     <Box
@@ -111,23 +134,10 @@ export default function FirmDetails (props) {
             {firm?.name}
           </Typography>
 
-          <Box sx={{ display: 'flex', mb: 4 }}>
+          <IconItemWrapper sx={{ display: 'flex' }}>
             {CARD_INFO.map((item, index) => (
-              <Box
-                key={index}
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center'
-                }}
-              >
-                <Box sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  ml: 2.4,
-                  mr: 0.8
-                }}
-                >
+              <IconItem key={index}>
+                <Box>
                   {item.icon}
                 </Box>
 
@@ -139,49 +149,12 @@ export default function FirmDetails (props) {
                   }}
                 >{item.title}
                 </Typography>
-              </Box>
+              </IconItem>
             ))}
-          </Box>
+          </IconItemWrapper>
 
-          <Box sx={{
-            display: 'flex',
-            alignItems: 'center'
-          }}
-          >
-            <Typography
-              variant='h3'
-              color='primary.blue'
-              sx={{ fontWeight: 700, mb: 2.4, mr: 3.5 }}
-            >
-              About
-            </Typography>
+          <TabsComponent firm={firm} jobs={jobs} />
 
-            <Typography
-              variant='h3'
-              color='primary.darkGray'
-              sx={{ fontWeight: 700, mb: 2.4 }}
-            >
-              Jobs
-            </Typography>
-          </Box>
-
-          <Box sx={{ mb: 2.3 }}>
-            <Typography
-              variant='body1'
-              align='center'
-            >
-              {/* {firm?.about} */}
-              <div dangerouslySetInnerHTML={createMarkup()} />
-            </Typography>
-          </Box>
-
-          <Image
-            src='/quality.jpg'
-            alt='quality'
-            width={1024}
-            height={456}
-            priority
-          />
         </Box>
       </Container>
     </Box>
