@@ -58,6 +58,7 @@ export default function TabsComponent ({ firm, jobs }) {
             label='About'
             sx={{
               fontWeight: 700,
+              color: '#4D4F52',
               fontSize: '28px',
               textTransform: 'capitalize',
               borderRadius: 8
@@ -68,6 +69,7 @@ export default function TabsComponent ({ firm, jobs }) {
             label='Jobs'
             sx={{
               fontWeight: 700,
+              color: '#4D4F52',
               fontSize: '28px',
               textTransform: 'capitalize',
               borderRadius: 8
