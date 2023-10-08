@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-import { FOOTER_LINKS } from 'constants/links'
+import { MAIN, FOOTER_LINKS, TWITTER_LINK, LINKEDIN_LINK } from 'constants/links'
 
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
@@ -38,23 +38,25 @@ function Footer (props) {
           }}
           >
             <Box>
-              <Box sx={{
-                display: { xs: 'none', sm: 'block' }
-              }}
+              <Link
+                href={MAIN}
+                sx={{
+                  display: { xs: 'none', sm: 'block' }
+                }}
               >
                 <Logo />
-              </Box>
+              </Link>
 
               <Box sx={{
                 display: 'flex',
                 justifyContent: 'space-around'
               }}
               >
-                <Link href='https://twitter.com/' target='_blank' rel='noopener noreferrer'>
+                <Link href={TWITTER_LINK} target='_blank' rel='noopener noreferrer'>
                   <TwitterIcon />
                 </Link>
 
-                <Link href='https://www.linkedin.com/' target='_blank' rel='noopener noreferrer'>
+                <Link href={LINKEDIN_LINK} target='_blank' rel='noopener noreferrer'>
                   <InIcon />
                 </Link>
               </Box>

@@ -34,6 +34,9 @@ export const NAV_ITEMS = [
   }
 ]
 
+export const TWITTER_LINK = 'https://twitter.com/'
+export const LINKEDIN_LINK = 'https://www.linkedin.com/'
+
 export const FOOTER_LINKS = [
   {
     title: 'Active Positions',
