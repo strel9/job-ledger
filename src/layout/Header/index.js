@@ -25,8 +25,8 @@ import { NAV_ITEMS, MAIN } from 'constants/links'
 import MenuIcon from '@mui/icons-material/Menu'
 import Logo from 'icons/Logo'
 
-import useClasses from 'hooks/useClasses'
-import styles from './styles'
+// import useClasses from 'hooks/useClasses'
+// import styles from './styles'
 
 const drawerWidth = 240
 
@@ -130,7 +130,7 @@ function DrawerAppBar (props) {
                     ...(index < NAV_ITEMS.length - 1 && {
                       mr: { xs: 1, sm: 2, lg: 4.2 }
                     }),
-                    ...(router.asPath === item.link && {
+                    ...(router.asPath.includes(item.link) && {
                       color: 'primary.blue',
                       fontWeight: 700
                     })
