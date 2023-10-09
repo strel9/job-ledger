@@ -1,19 +1,9 @@
 import React from 'react'
 
-import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
-import Button from '@mui/material/Button'
-import CardMedia from '@mui/material/CardMedia'
 import Grid from '@mui/material/Unstable_Grid2'
 
 import CardArticle from 'components/CardArticle'
-
-// export const getServerSideProps = async (context) => {
-//   return {
-//     props: {
-//     }
-//   }
-// }
 
 export default function ArticlesBlock (props) {
   const { articles } = props

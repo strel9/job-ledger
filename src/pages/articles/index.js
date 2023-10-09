@@ -15,7 +15,7 @@ import Content from './Content'
 // import useClasses from 'hooks/useClasses'
 // import styles from './styles'
 
-export const getServerSideProps = async (context) => {
+export const getStaticProps = async (context) => {
   return {
     props: {
     }

@@ -16,13 +16,6 @@ import EllipseIcon from 'icons/EllipseIcon'
 // import useClasses from 'hooks/useClasses'
 // import styles from './styles'
 
-export const getServerSideProps = async (context) => {
-  return {
-    props: {
-    }
-  }
-}
-
 export default function FirmsContent (props) {
   // const classes = useClasses(styles)
   const {

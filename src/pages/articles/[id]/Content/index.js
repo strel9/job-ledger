@@ -1,7 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
 import { styled } from '@mui/material/styles'
-// import { useSelector } from 'react-redux'
 
 import { ARTICLES_LINK } from 'constants/links'
 
@@ -17,15 +16,6 @@ import ArticleIcon from 'icons/ArticleIcon'
 // import useClasses from 'hooks/useClasses'
 // import styles from './styles'
 
-// const isLoading = useSelector(state => state.data.isLoading)
-
-// export const getServerSideProps = async (context) => {
-//   return {
-//     props: {
-//     }
-//   }
-// }
-
 export default function Content (props) {
   // const classes = useClasses(styles)
   const {
@@ -34,10 +24,9 @@ export default function Content (props) {
     title,
     description,
     tagline,
-    writer_image,
-    writer_name,
-    updated_at,
-    articles
+    writer_image: writerImage,
+    writer_name: writerName,
+    updated_at: updateAt
   } = props
 
   const Root = styled('div')(({ theme }) => ({
@@ -78,7 +67,7 @@ export default function Content (props) {
         <CardMedia
           component='img'
           height='194'
-          image={writer_image}
+          image={writerImage}
           alt={title}
           sx={{
             mb: 2.4
@@ -155,7 +144,7 @@ export default function Content (props) {
           mb: 4
         }}
         >
-          <Avatar alt={writer_image} src={writer_image} />
+          <Avatar alt={writerImage} src={writerImage} />
           <Box sx={{
             display: 'flex',
             flexDirection: 'column',
@@ -163,10 +152,11 @@ export default function Content (props) {
           }}
           >
             <Typography>
-              {writer_name}
+              {writerName}
             </Typography>
+
             <Typography>
-              {updated_at}
+              {updateAt}
             </Typography>
           </Box>
         </Box>

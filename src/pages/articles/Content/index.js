@@ -16,13 +16,6 @@ import EllipseIcon from 'icons/EllipseIcon'
 // import useClasses from 'hooks/useClasses'
 // import styles from './styles'
 
-export const getServerSideProps = async (context) => {
-  return {
-    props: {
-    }
-  }
-}
-
 export default function ArticlesContent (props) {
   // const classes = useClasses(styles)
 
@@ -30,10 +23,6 @@ export default function ArticlesContent (props) {
     articlesData, isLoading, offset, limit,
     handleOffset, handleLimit
   } = props
-
-  // const isLoading = useSelector(state => state.data.isLoading)
-  // const articlesData = useSelector(state => state.data.articlesData)
-  // const filteredArticles = useSelector(state => state.filter.filteredArticles)
 
   const TODAY_DATE = format(new Date(), 'MMMM dd, yyyy')
 

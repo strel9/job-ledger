@@ -12,12 +12,11 @@ import Content from './Content'
 // import useClasses from 'hooks/useClasses'
 // import styles from './styles'
 
-export const getServerSideProps = async ({ query }) => {
-  const page = await query.page || 0
+export const getStaticProps = async ({ query }) => {
+  // const page = await query.page || 0
 
   return {
     props: {
-      page
     }
   }
 }
@@ -59,11 +58,8 @@ export default function JobsPage (props) {
 
       const jobsDataFetch = await response.json()
       const jobs = jobsDataFetch.jobs
-      // console.log(jobs)
       const jobsCount = jobsDataFetch.job_count
-      // console.log(jobsCount)
 
-      // setJobsData([...jobsData, ...jobs])
       setJobsData(jobs)
       setJobsCount(jobsCount)
       setIsLoading(false)
