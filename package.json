@@ -15,6 +15,7 @@
     "@mui/icons-material": "^5.14.8",
     "@mui/material": "^5.14.10",
     "@reduxjs/toolkit": "^1.9.5",
+    "crisp-sdk-web": "^1.0.21",
     "date-fns": "^2.30.0",
     "lodash": "^4.17.21",
     "next": "13.4.19",

@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import dynamic from 'next/dynamic'
 // import Script from 'next/script'
 import GoogleAnalytics from 'components/GoogleAnalytics'
 
@@ -19,6 +20,10 @@ import '../../styles/globals.css'
 export default function App (props) {
   const { Component, pageProps } = props
 
+  const CrispWithNoSSR = dynamic(
+    () => import('components/Crisp')
+  )
+
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
@@ -29,6 +34,7 @@ export default function App (props) {
             <meta name='viewport' content='width=device-width, initial-scale=1' />
             <link rel='icon' href='/favicon.ico' />
             <GoogleAnalytics />
+            <CrispWithNoSSR />
           </Head>
 
           <Component {...pageProps} />
