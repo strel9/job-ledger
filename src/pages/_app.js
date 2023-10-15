@@ -1,3 +1,7 @@
+import Head from 'next/head'
+// import Script from 'next/script'
+import GoogleAnalytics from 'components/GoogleAnalytics'
+
 import { ThemeProvider } from '@mui/material/styles'
 import Layout from 'layout'
 import theme from 'constants/theme'
@@ -19,6 +23,14 @@ export default function App (props) {
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <Layout>
+          <Head>
+            <title>JobLedger title</title>
+            <meta name='description' content='JobLedger description' />
+            <meta name='viewport' content='width=device-width, initial-scale=1' />
+            <link rel='icon' href='/favicon.ico' />
+            <GoogleAnalytics />
+          </Head>
+
           <Component {...pageProps} />
         </Layout>
       </ThemeProvider>
