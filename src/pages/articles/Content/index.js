@@ -71,14 +71,14 @@ export default function ArticlesContent (props) {
               <Skeleton variant='rounded' width={360} height={210} />
             </Grid>
             )))
-          : (articlesData.map((item, index) => (
+          : (articlesData?.map((item, index) => (
             <Grid xs={4} sm={8} md={6} key={index}>
               <CardArticle {...item} />
             </Grid>
             )))}
       </Grid>
 
-      {!(articlesData.length < 10) && (
+      {!(articlesData?.length < 10) && (
         <Box sx={{
           display: 'flex',
           justifyContent: 'center',

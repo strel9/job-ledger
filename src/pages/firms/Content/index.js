@@ -69,7 +69,7 @@ export default function FirmsContent (props) {
               <Skeleton variant='rounded' width={360} height={210} />
             </Grid>
             ))
-          : (firmsData.map((item, index) =>
+          : (firmsData?.map((item, index) =>
             <Grid xs={4} sm={8} md={6} key={index}>
               <CardFirm {...item} />
             </Grid>
@@ -82,7 +82,7 @@ export default function FirmsContent (props) {
         pt: 3.2
       }}
       >
-        {firmsData.length >= offset && (
+        {firmsData?.length >= offset && (
           <Button
             component={Link}
             onClick={(e) => {
