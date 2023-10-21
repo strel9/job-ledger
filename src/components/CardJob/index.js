@@ -21,8 +21,10 @@ export default function CardJob (props) {
 
   const {
     id, job_title: jobTitle, service, location, employment, salary,
-    firm_logo: firmLogo, firm_name: firmName, variantCard
+    firm_logo: firmLogo, firm_name: firmName
   } = props
+
+  // console.log(`https://job-ledger-backend.onrender.com${firmLogo}`)
 
   const CARD_JOB_ICONS = [
     {
@@ -148,7 +150,7 @@ export default function CardJob (props) {
           </Typography>
 
           <Image
-            src={firmLogo}
+            src={`https://job-ledger-backend.onrender.com${firmLogo}`}
             alt={firmName}
             width={280}
             height={50}
