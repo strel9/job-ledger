@@ -18,11 +18,13 @@ import ArticleIcon from 'icons/ArticleIcon'
 
 export default function Content (props) {
   // const classes = useClasses(styles)
+
   const {
     id,
     body,
     title,
     description,
+    topic,
     tagline,
     writer_image: writerImage,
     writer_name: writerName,
@@ -38,7 +40,7 @@ export default function Content (props) {
   }))
 
   function createMarkup () {
-    return { __html: description }
+    return { __html: body }
   }
 
   return (
@@ -96,7 +98,7 @@ export default function Content (props) {
               mb: 1.6
             }}
           >
-            {body}
+            {topic}
           </Typography>
 
           <Box
@@ -144,7 +146,10 @@ export default function Content (props) {
           mb: 4
         }}
         >
-          <Avatar alt={writerImage} src={writerImage} />
+          <Avatar
+            alt={writerImage}
+            src={`https://job-ledger-backend.onrender.com${writerImage}`}
+          />
           <Box sx={{
             display: 'flex',
             flexDirection: 'column',

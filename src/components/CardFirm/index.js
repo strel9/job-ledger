@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 
 import Box from '@mui/material/Box'
@@ -60,10 +61,17 @@ export default function CardFirms (props) {
       >
         <CardMedia
           component='img'
-            // height=''
-          image={logo}
+          height='30'
+          image={`https://job-ledger-backend.onrender.com${logo}`}
           alt={name}
         />
+        {/* <Image
+          src={`https://job-ledger-backend.onrender.com${logo}`}
+          alt={logo}
+          width={200}
+          height={30}
+          priority
+        /> */}
       </Box>
 
       <Box
