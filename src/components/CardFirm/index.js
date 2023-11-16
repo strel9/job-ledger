@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 
 import Box from '@mui/material/Box'
@@ -10,7 +9,7 @@ import LocationIcon from 'icons/LocationIcon'
 import RankIcon from 'icons/RankIcon'
 import RolesIcon from 'icons/RolesIcon'
 
-import { FIRM_DETAILS_LINK } from 'constants/links'
+import { API_URL, FIRM_DETAILS_LINK } from 'constants/links'
 
 import useClasses from 'hooks/useClasses'
 
@@ -47,7 +46,6 @@ export default function CardFirms (props) {
       component={Link}
       href={`${FIRM_DETAILS_LINK}/${id}`}
       sx={{
-        // backgroundColor: 'primary.lightGray',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -61,17 +59,11 @@ export default function CardFirms (props) {
       >
         <CardMedia
           component='img'
-          height='30'
-          image={`https://job-ledger-backend.onrender.com${logo}`}
+          height='35'
+          image={`${API_URL}${logo}`}
           alt={name}
         />
-        {/* <Image
-          src={`https://job-ledger-backend.onrender.com${logo}`}
-          alt={logo}
-          width={200}
-          height={30}
-          priority
-        /> */}
+
       </Box>
 
       <Box

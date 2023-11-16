@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 
 import { API_URL, FIRMS_LINK, FIRM_DETAILS_GET, JOBS_BY_FIRM_GET } from 'constants/links'
@@ -8,6 +7,7 @@ import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
+import CardMedia from '@mui/material/CardMedia'
 
 import TabsComponent from './TabsComponent'
 
@@ -60,7 +60,6 @@ export default function FirmDetails (props) {
 
   return (
     <Box
-      // className={classes.root}
       sx={{
         pt: 14.8,
         pb: 10,
@@ -95,13 +94,14 @@ export default function FirmDetails (props) {
 
         }}
         >
-          <Image
-            src={firm?.firm_logo}
-            alt={firm?.firm_name}
-            width={280}
-            height={50}
-            priority
-          />
+          <Box>
+            <CardMedia
+              component='img'
+              height='60'
+              image={`${API_URL}${firm?.logo}`}
+              alt={firm?.name}
+            />
+          </Box>
         </Box>
 
         <Box sx={{

@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 
 import { API_URL, JOB_DETAILS_GET, JOBS_LINK } from 'constants/links'
@@ -7,8 +6,8 @@ import { API_URL, JOB_DETAILS_GET, JOBS_LINK } from 'constants/links'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
-import Grid from '@mui/material/Unstable_Grid2'
 import Button from '@mui/material/Button'
+import CardMedia from '@mui/material/CardMedia'
 
 import ArrowLeftIcon from 'icons/ArrowLeftIcon'
 import LocationIcon from 'icons/LocationIcon'
@@ -30,12 +29,10 @@ export const getServerSideProps = async (context) => {
 export default function JobDetails (props) {
   const { job } = props
 
-  // const classes = useClasses(styles)
-
   const CARD_INFO = [
     {
       icon: <LocationIcon />,
-      title: job?.location
+      title: job?.location.match(/(\w+)/)[0]
     },
     {
       icon: <WatchIcon />,
@@ -82,17 +79,20 @@ export default function JobDetails (props) {
           alignItems: 'center',
           bgcolor: 'primary.ultraLightBlue',
           mb: 3.2,
-          height: 150
+          height: 150,
+          borderTopLeftRadius: 24,
+          borderTopRightRadius: 24
 
         }}
         >
-          <Image
-            src={job?.firm_logo}
-            alt={job?.firm_name}
-            width={280}
-            height={50}
-            priority
-          />
+          <Box>
+            <CardMedia
+              component='img'
+              height='60'
+              image={`${API_URL}${job?.firm_logo}`}
+              alt={job?.firm_name}
+            />
+          </Box>
         </Box>
 
         <Box sx={{

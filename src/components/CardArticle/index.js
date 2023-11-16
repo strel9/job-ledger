@@ -2,7 +2,6 @@ import React from 'react'
 import Link from 'next/link'
 
 import Box from '@mui/material/Box'
-// import Card from '@mui/material/Card'
 import Typography from '@mui/material/Typography'
 import CardMedia from '@mui/material/CardMedia'
 
@@ -20,9 +19,7 @@ export default function CardArticle (props) {
   const {
     description,
     title,
-    tagline,
-    writer_image: writerImage,
-    time_read: timeRead,
+    topic,
     id
   } = props
 
@@ -45,27 +42,29 @@ export default function CardArticle (props) {
       >
         <CardMedia
           component='img'
-          image={writerImage}
+          image='/Rectangle30.png'
           alt={title}
+          sx={{ mb: 1.6 }}
         />
 
         <Typography
           variant='caption'
           color='primary.darkGray'
         >
-          {tagline}
+          {topic}
         </Typography>
 
         <Typography
           variant='h4'
           color='primary.purple'
-          sx={{ mb: 0.8 }}
+          sx={{
+            mb: 0.8
+          }}
         >
           {title}
         </Typography>
 
         <Typography
-          // className={classes.description}
           variant='body2'
           color='primary.text'
           sx={{ mb: 0.8 }}

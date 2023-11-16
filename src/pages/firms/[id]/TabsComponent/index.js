@@ -25,7 +25,7 @@ export default function TabsComponent ({ firm, jobs }) {
       >
         {value === index && (
           <Box sx={{ p: 3 }}>
-            <Typography>{children}</Typography>
+            <div>{children}</div>
           </Box>
         )}
       </div>
@@ -40,7 +40,7 @@ export default function TabsComponent ({ firm, jobs }) {
   }
 
   function createMarkup () {
-    return { __html: firm?.last_scraped }
+    return { __html: firm?.location }
   }
 
   const handleChange = (event, newValue) => {
@@ -80,7 +80,7 @@ export default function TabsComponent ({ firm, jobs }) {
       </Box>
 
       <CustomTabPanel value={valueTab} index={0}>
-        <Box
+        <Typography
           sx={{
             mb: 2.3,
             color: '#242A35'
@@ -95,6 +95,7 @@ export default function TabsComponent ({ firm, jobs }) {
           height={456}
           priority
         />
+
       </CustomTabPanel>
 
       <CustomTabPanel value={valueTab} index={1}>

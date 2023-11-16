@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { styled } from '@mui/material/styles'
 
-import { ARTICLES_LINK } from 'constants/links'
+import { API_URL, ARTICLES_LINK } from 'constants/links'
 
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
@@ -69,7 +69,7 @@ export default function Content (props) {
         <CardMedia
           component='img'
           height='194'
-          image={writerImage}
+          image='/Rectangle30.png'
           alt={title}
           sx={{
             mb: 2.4
@@ -136,19 +136,19 @@ export default function Content (props) {
             {description}
           </Typography>
 
-          <Typography dangerouslySetInnerHTML={createMarkup()} />
-
+          <Typography component='div' dangerouslySetInnerHTML={createMarkup()} />
         </Box>
 
         <Box sx={{
           display: 'flex',
           alignItems: 'center',
-          mb: 4
+          mb: 4,
+          mt: 3.4
         }}
         >
           <Avatar
             alt={writerImage}
-            src={`https://job-ledger-backend.onrender.com${writerImage}`}
+            src={`${API_URL}${writerImage}`}
           />
           <Box sx={{
             display: 'flex',
@@ -165,7 +165,6 @@ export default function Content (props) {
             </Typography>
           </Box>
         </Box>
-
       </Box>
     </Root>
   )

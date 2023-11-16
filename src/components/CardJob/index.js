@@ -1,16 +1,16 @@
 import React from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Unstable_Grid2'
 import Typography from '@mui/material/Typography'
+import CardMedia from '@mui/material/CardMedia'
 
 import LocationIcon from 'icons/LocationIcon'
 import WatchIcon from 'icons/WatchIcon'
 import DollarIcon from 'icons/DollarIcon'
 
-import { JOB_DETAILS_LINK } from 'constants/links'
+import { API_URL, JOB_DETAILS_LINK } from 'constants/links'
 
 import useClasses from 'hooks/useClasses'
 
@@ -27,7 +27,7 @@ export default function CardJob (props) {
   const CARD_JOB_ICONS = [
     {
       icon: <LocationIcon />,
-      title: location
+      title: location.match(/(\w+)/)[0]
     },
     {
       icon: <WatchIcon />,
@@ -52,13 +52,14 @@ export default function CardJob (props) {
         sx={{
           height: '100%',
           display: 'flex',
+          // alignItems: 'center',
           flexDirection: 'column',
           justifyContent: 'space-between'
         }}
       >
         <Box
           sx={{
-            height: '100%',
+            // height: '100%',
             pt: 2.4,
             pb: 1.3,
             px: 2,
@@ -74,6 +75,7 @@ export default function CardJob (props) {
           >
             {jobTitle}
           </Typography>
+
           <div>
             <Typography
               variant='body1'
@@ -129,31 +131,37 @@ export default function CardJob (props) {
             display: 'flex',
             alignItems: 'center',
             backgroundColor: 'primary.ultraLightBlue',
-            pl: '24px',
-            pr: '44px',
+            pl: 2.4,
+            pr: 4.4,
             minHeight: 58,
             borderBottomLeftRadius: 16,
             borderBottomRightRadius: 16
           }}
         >
-          <Typography
-            variant='body1'
-            color='primary.black'
+          <Box
             sx={{
-              fontWeight: 600,
-              paddingRight: '16px'
+              display: 'flex',
+              alignItems: 'center'
             }}
           >
-            By
-          </Typography>
+            <Typography
+              variant='body1'
+              color='primary.black'
+              sx={{
+                fontWeight: 600,
+                paddingRight: '16px'
+              }}
+            >
+              By
+            </Typography>
 
-          <Image
-            src={`https://job-ledger-backend.onrender.com${firmLogo}`}
-            alt={firmName}
-            width={280}
-            height={50}
-            priority
-          />
+            <CardMedia
+              component='img'
+              height='35'
+              image={`${API_URL}${firmLogo}`}
+              alt={firmName}
+            />
+          </Box>
         </Box>
       </Box>
     </Box>
