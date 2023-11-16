@@ -59,7 +59,7 @@ export default function CardJob (props) {
       >
         <Box
           sx={{
-            // height: '100%',
+            height: '100%',
             pt: 2.4,
             pb: 1.3,
             px: 2,
