@@ -31,14 +31,15 @@ export const getServerSideProps = async (context) => {
   return {
     props: {
       firm: data,
-      jobs: jobsData
+      jobs: jobsData,
+      id
     }
   }
 }
 
 export default function FirmDetails (props) {
   // const classes = useClasses(styles)
-  const { firm, jobs, iSnumber = true } = props
+  const { firm, jobs, id, iSnumber = true } = props
 
   const CARD_INFO = [
     {
@@ -171,7 +172,7 @@ export default function FirmDetails (props) {
             ))}
           </Box>
 
-          <TabsComponent firm={firm} jobs={jobs} />
+          <TabsComponent firm={firm} jobs={jobs} id={id} />
 
         </Box>
       </Container>
