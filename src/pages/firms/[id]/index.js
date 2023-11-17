@@ -23,23 +23,27 @@ export const getServerSideProps = async (context) => {
   const { id } = context.params
 
   const response = await fetch(`${API_URL}${FIRM_DETAILS_GET}/${id}`)
-  const data = await response.json()
+  const firmData = await response.json()
 
   const responseJobs = await fetch(`${API_URL}${JOBS_BY_FIRM_GET}/${id}`)
   const jobsData = await responseJobs.json()
 
+  const responseAbout = await fetch(`${API_URL}${firmData?.about}`)
+  const aboutMarkdown = await responseAbout.text()
+
   return {
     props: {
-      firm: data,
+      firm: firmData,
       jobs: jobsData,
-      id
+      // id,
+      aboutMarkdown
     }
   }
 }
 
 export default function FirmDetails (props) {
   // const classes = useClasses(styles)
-  const { firm, jobs, id, iSnumber = true } = props
+  const { firm, jobs, aboutMarkdown, iSnumber = true } = props
 
   const CARD_INFO = [
     {
@@ -172,7 +176,7 @@ export default function FirmDetails (props) {
             ))}
           </Box>
 
-          <TabsComponent firm={firm} jobs={jobs} id={id} />
+          <TabsComponent firm={firm} jobs={jobs} aboutMarkdown={aboutMarkdown} />
 
         </Box>
       </Container>

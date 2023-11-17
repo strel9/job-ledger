@@ -3,8 +3,6 @@ import Image from 'next/image'
 
 import ReactMarkdown from 'react-markdown'
 
-import { API_URL } from 'constants/links'
-
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Unstable_Grid2'
@@ -13,15 +11,8 @@ import Tab from '@mui/material/Tab'
 
 import CardJobs from 'components/CardJob'
 
-export default function TabsComponent ({ firm, jobs, id }) {
+export default function TabsComponent ({ firm, jobs, aboutMarkdown }) {
   const [valueTab, setValueTab] = React.useState(0)
-  const [aboutMarkdown, setAboutMarkdown] = React.useState('')
-
-  React.useEffect(() => {
-    fetch(`${API_URL}${firm?.about}`)
-      .then((res) => res.text())
-      .then((text) => setAboutMarkdown(text))
-  }, [])
 
   function CustomTabPanel (props) {
     const { children, value, index, ...other } = props
@@ -88,6 +79,7 @@ export default function TabsComponent ({ firm, jobs, id }) {
 
       <CustomTabPanel value={valueTab} index={0}>
         <Typography
+          component='div'
           sx={{
             mb: 2.3,
             color: '#242A35'
