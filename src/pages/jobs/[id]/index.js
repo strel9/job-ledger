@@ -153,7 +153,8 @@ export default function JobDetails (props) {
             ))}
           </Box>
 
-          <Box
+          <Typography
+            component='div'
             sx={{
               mb: 2.3,
               color: '#242A35'
@@ -163,6 +164,12 @@ export default function JobDetails (props) {
 
           <Button
             variant='contained'
+            component={Link}
+            href={job?.link}
+            sx={{
+              fontSize: 18,
+              fontWeight: 500
+            }}
           >
             Apply for job
           </Button>
