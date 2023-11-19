@@ -23,11 +23,10 @@ export default function CardJob (props) {
     id, job_title: jobTitle, service, location, employment, salary,
     firm_logo: firmLogo, firm_name: firmName
   } = props
-
   const CARD_JOB_ICONS = [
     {
       icon: <LocationIcon />,
-      title: location.match(/(\w+)/)[0]
+      title: location ? location?.match(/(\w+)/)[0] : ''
     },
     {
       icon: <WatchIcon />,
