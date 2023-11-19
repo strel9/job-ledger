@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 
-// import ReactMarkdown from 'react-markdown'
+import ReactMarkdown from 'react-markdown'
 
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
@@ -85,9 +85,7 @@ export default function TabsComponent ({ firm, jobs, aboutMarkdown }) {
             color: '#242A35'
           }}
         >
-          TEST without Markdown
-          {aboutMarkdown}
-          {/* <ReactMarkdown>{aboutMarkdown}</ReactMarkdown> */}
+          <ReactMarkdown>{aboutMarkdown}</ReactMarkdown>
         </Typography>
 
         <Image
