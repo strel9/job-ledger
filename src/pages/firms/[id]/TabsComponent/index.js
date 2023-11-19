@@ -85,7 +85,8 @@ export default function TabsComponent ({ firm, jobs, aboutMarkdown }) {
             color: '#242A35'
           }}
         >
-          <ReactMarkdown>{aboutMarkdown}</ReactMarkdown>
+          {aboutMarkdown}
+          {/* <ReactMarkdown>{aboutMarkdown}</ReactMarkdown> */}
         </Typography>
 
         <Image
